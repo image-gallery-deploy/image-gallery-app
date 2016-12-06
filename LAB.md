@@ -9,7 +9,7 @@ For this assignment, build three different display components for an image url:
 
 You can use your own URL, or work with this cute bunny: http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg 
 
-Create a high-level component that loads all three different directives for a 
+Create a high-level component that loads all three different components for a 
 single hard-coded url (feel free to put into a service), to demonstrate the distinctions between each display mode.
 
 Create an app component that hosts the high-level component.
@@ -19,10 +19,10 @@ BONUS:
 
 # Requirements
 App requirements: 7pts
-  - Create a directive to display a text only version of the image.
-  - Create a directive to display a thumbnail version of the image.
-  - Create a directive to display a full size image with a title and description.
-  - Display the same directive using all three directives on a single page
+  - Create a component to display a text only version of the image.
+  - Create a component to display a thumbnail version of the image.
+  - Create a component to display a full size image with a title and description.
+  - Display the same component using all three component on a single page
 
 Code style: 3pts
   - Passes linter
