@@ -5,6 +5,10 @@
 
 * Restructure project as needed to support this lab
   * (suggestion: start with git mv to put into app folder)
+  * don't forget:
+   * rm -rf node_modules at project root
+   * npm i in app folder
+   * (or just copy node_modules folder into app :)
   
 * Create API services for getting images.
 
