@@ -1,2 +1,8 @@
-
+body {
+  font-family: sans-serif;
+  color: darkgray;
+  background-color: darkblue;
+  padding: 3%;
+  margin: auto;
+}
 /*# sourceMappingURL=main.css.map*/

@@ -1,0 +1,10 @@
+:local(.thumbs) {
+  border: solid black 1px;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+:local(.thumbs:hover) {
+  border: solid darkturquoise 1px;
+}
