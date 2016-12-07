@@ -1,8 +1,0 @@
-:local(.big) {
-  border: solid black 1px;
-  max-width: 25%;
-}
-
-:local(.big:hover) {
-  border: solid darkturquoise 1px;
-}
