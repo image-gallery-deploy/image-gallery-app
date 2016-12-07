@@ -1,6 +1,8 @@
 ![cf](http://i.imgur.com/7v5ASc8.png) Image Gallery "Cute Bunny" Services
 ===
 
+* Don't work on same branch if first lab hasn't been merged!
+
 * Restructure project as needed to support this lab
   * (suggestion: start with git mv to put into app folder)
   
@@ -10,9 +12,7 @@
 
 * Write a images component that uses the service expose data and actions
   * Displays images
-  * Add new image
-  * Remove image
-  
+
 * Add Toggle View Functionality
   * Either change within wrapper component
   * Or use a separate list for each view (but don't repeat image service logic, use different
@@ -20,6 +20,11 @@
 
 * Make your API url configured via an angular value
 
+Bonus
+
+* Include:
+   * Add new image
+   * Remove image
 
 Test your service components:
 
