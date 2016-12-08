@@ -32981,8 +32981,9 @@
 
 	var map = {
 		"./bunny-app/bunny-app.js": 12,
-		"./bunny-text/bunny-text.js": 14,
-		"./bunny-thumbs/bunny-thumbs.js": 16
+		"./bunny-big/bunny-big.js": 14,
+		"./bunny-text/bunny-text.js": 18,
+		"./bunny-thumbs/bunny-thumbs.js": 20
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33027,28 +33028,44 @@
 	  this.bunnies = [{
 	    title: 'Snuggly-wuggly',
 	    url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg',
-	    description: 'Aren\'t I just the little dickens!'
+	    description: 'Aren\'t I the little dickens!'
+	  }, {
+	    title: 'Wudgy-wudgy',
+	    url: 'http://cdn.wallpapersafari.com/48/78/wf3rOl.jpg',
+	    description: 'Wiffle-wiffle!'
+	  }, {
+	    title: 'Ooooooh!',
+	    url: 'https://media.yayomg.com/wp-content/uploads/2014/04/yayomg-tiny-bunny.png',
+	    description: 'Meep!'
+	  }, {
+	    title: 'Adorable Onslaught',
+	    url: 'http://static.quizur.com/i/b/56ef08924fe165.39337854hqdefault.jpg',
+	    description: 'Wuv me!'
+	  }, {
+	    title: 'Woo-woo-woo!',
+	    url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg',
+	    description: 'Up!'
 	  }];
 	
 	  this.toggleText = function () {
 	    console.log('toggleText');
 	    _this.showText = true;
 	    _this.showThumbs = false;
-	    _this.showFull = false;
+	    _this.showBig = false;
 	  };
 	
 	  this.toggleThumbs = function () {
 	    console.log('toggleThumbs');
 	    _this.showText = false;
 	    _this.showThumbs = true;
-	    _this.showFull = false;
+	    _this.showBig = false;
 	  };
 	
-	  this.toggleFull = function () {
-	    console.log('toggleFull');
+	  this.toggleBig = function () {
+	    console.log('toggleBig');
 	    _this.showText = false;
 	    _this.showThumbs = false;
-	    _this.showFull = true;
+	    _this.showBig = true;
 	  };
 	}
 
@@ -33056,7 +33073,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>Welcome to the Kingdom of Kuddle</h1>\n\n<button ng-click=\"app.toggleText()\">BunnyLinks</button>\n<button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n<button ng-click=\"app.toggleFull()\">FullBunny</button>\n\n<ul ng-show=\"app.showText\">\n  <li ng-repeat=\"bunny in app.bunnies\">\n    <bunny-text\n    bunny=\"bunny\">\n    </bunny-text>\n  </li>\n</ul>\n\n<ul ng-show=\"app.showThumbs\">\n  <li ng-repeat=\"bunny in app.bunnies\">\n    <bunny-thumbs\n    bunny=\"bunny\">\n    </bunny-thumbs>\n  </li>\n</ul>\n\n<ul ng-show=\"app.showFull\">\n  <li ng-repeat=\"bunny in app.bunnies\">\n    <bunny-full\n    bunny=\"bunny\">\n    </bunny-full>\n  </li>\n</ul>\n\n";
+	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  <section>\n    <button ng-click=\"app.toggleText()\">BunnyLinks</button>\n    <button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n    <button ng-click=\"app.toggleBig()\">BunnyBig</button>\n  </section>\n\n  <section>\n  <ul ng-show=\"app.showText\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-text\n      bunny=\"bunny\">\n      </bunny-text>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showThumbs\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-thumbs\n      bunny=\"bunny\">\n      </bunny-thumbs>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showBig\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-big\n      bunny=\"bunny\">\n      </bunny-big>\n    </li>\n  </ul>\n  </section>\n</article>\n";
 
 /***/ },
 /* 14 */
@@ -33068,7 +33085,54 @@
 	  value: true
 	});
 	
-	var _bunnyText = __webpack_require__(15);
+	var _bunnyBig = __webpack_require__(15);
+	
+	var _bunnyBig2 = _interopRequireDefault(_bunnyBig);
+	
+	var _bunnyBig3 = __webpack_require__(16);
+	
+	var _bunnyBig4 = _interopRequireDefault(_bunnyBig3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _bunnyBig2.default,
+	  bindings: {
+	    bunny: '='
+	  },
+	  controller: controller
+	};
+	
+	
+	function controller() {
+	  this.styles = _bunnyBig4.default;
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<p>{{$ctrl.bunny.description}}</p>\n";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"big":"_1-SFMhmWvF0zX_1JXsyHXi"};
+
+/***/ },
+/* 17 */,
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _bunnyText = __webpack_require__(19);
 	
 	var _bunnyText2 = _interopRequireDefault(_bunnyText);
 	
@@ -33082,13 +33146,13 @@
 	};
 
 /***/ },
-/* 15 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = "<span><a ng-href=\"{{$ctrl.bunny.url}}\">{{$ctrl.bunny.title}}</a></span>";
 
 /***/ },
-/* 16 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33097,9 +33161,13 @@
 	  value: true
 	});
 	
-	var _bunnyThumbs = __webpack_require__(17);
+	var _bunnyThumbs = __webpack_require__(21);
 	
 	var _bunnyThumbs2 = _interopRequireDefault(_bunnyThumbs);
+	
+	var _bunnyThumbs3 = __webpack_require__(22);
+	
+	var _bunnyThumbs4 = _interopRequireDefault(_bunnyThumbs3);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33107,14 +33175,27 @@
 	  template: _bunnyThumbs2.default,
 	  bindings: {
 	    bunny: '='
-	  }
+	  },
+	  controller: controller
 	};
+	
+	
+	function controller() {
+	  this.styles = _bunnyThumbs4.default;
+	}
 
 /***/ },
-/* 17 */
+/* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img class=\"thumbs\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<p>{{$ctrl.bunny.description}}</p>";
+	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.thumbs\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"thumbs":"_1nXR0zgSVJ36dPG9u7BRq2"};
 
 /***/ }
 /******/ ]);
