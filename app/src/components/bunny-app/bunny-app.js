@@ -6,7 +6,7 @@ export default {
   controllerAs: 'app'
 };
 
-controller.$inject = ['bunnyService'];
+controller.$inject = [ 'bunnyService' ];
 
 function controller(bunnies) {
   // // TODO: make this into a function to fetch bunnies from the db via a $http service
