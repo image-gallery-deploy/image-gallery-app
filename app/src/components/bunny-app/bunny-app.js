@@ -58,25 +58,4 @@ function controller(bunnies) {
     });
   };
 
-  this.toggleText = () => {
-    console.log('toggleText');
-    this.showText = true;
-    this.showThumbs = false;
-    this.showBig = false;
-  };
-
-  this.toggleThumbs = () => {
-    console.log('toggleThumbs');
-    this.showText = false;
-    this.showThumbs = true;
-    this.showBig = false;
-  };
-
-  this.toggleBig = () => {
-    console.log('toggleBig');
-    this.showText = false;
-    this.showThumbs = false;
-    this.showBig = true;
-  };
-
 }
