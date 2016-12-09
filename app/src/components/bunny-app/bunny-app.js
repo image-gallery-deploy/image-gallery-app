@@ -32,7 +32,7 @@ function controller() {
       title: 'Woo-woo-woo!', 
       url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg', 
       description: 'Up!' 
-    },
+    }
     
   ];
 

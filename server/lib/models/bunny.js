@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
+
 const Schema = mongoose.Schema;
 
 const schema = new Schema({

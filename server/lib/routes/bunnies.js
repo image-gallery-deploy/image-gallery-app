@@ -15,7 +15,7 @@ router
       if(req.query._id) query._id = req.query._id;
 
       Bunny.find(query)
-        .then(bunnies => res.send(bunnies))
+        .then((bunnies) => {res.send(bunnies);})
         .catch((err) => {
           next(err);
         });
