@@ -56,11 +56,18 @@
 	
 	var _components2 = _interopRequireDefault(_components);
 	
+	var _services = __webpack_require__(24);
+	
+	var _services2 = _interopRequireDefault(_services);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_angular2.default.module('myApp', [_components2.default]);
-	
 	// get components via index.js in components folder
+	var app = _angular2.default.module('myApp', [_components2.default, _services2.default]);
+	
+	var dev = 'http://localhost:3000/api';
+	
+	app.value('apiUrl', dev);
 
 /***/ },
 /* 1 */
@@ -33022,30 +33029,57 @@
 	};
 	
 	
-	function controller() {
+	controller.$inject = ['bunnyService'];
+	
+	function controller(bunnies) {
 	  var _this = this;
 	
-	  this.bunnies = [{
-	    title: 'Snuggly-wuggly',
-	    url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg',
-	    description: 'Aren\'t I the little dickens!'
-	  }, {
-	    title: 'Wudgy-wudgy',
-	    url: 'http://cdn.wallpapersafari.com/48/78/wf3rOl.jpg',
-	    description: 'Wiffle-wiffle!'
-	  }, {
-	    title: 'Ooooooh!',
-	    url: 'https://media.yayomg.com/wp-content/uploads/2014/04/yayomg-tiny-bunny.png',
-	    description: 'Meep!'
-	  }, {
-	    title: 'Adorable Onslaught',
-	    url: 'http://static.quizur.com/i/b/56ef08924fe165.39337854hqdefault.jpg',
-	    description: 'Wuv me!'
-	  }, {
-	    title: 'Woo-woo-woo!',
-	    url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg',
-	    description: 'Up!'
-	  }];
+	  // // TODO: make this into a function to fetch bunnies from the db via a $http service
+	  // this.bunnies = [
+	  //   { 
+	  //     title: 'Snuggly-wuggly', 
+	  //     url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg', 
+	  //     description: 'Aren\'t I the little dickens!' 
+	  //   },
+	  //   { 
+	  //     title: 'Wudgy-wudgy', 
+	  //     url: 'http://cdn.wallpapersafari.com/48/78/wf3rOl.jpg', 
+	  //     description: 'Wiffle-wiffle!' 
+	  //   },
+	  //   { 
+	  //     title: 'Ooooooh!', 
+	  //     url: 'https://media.yayomg.com/wp-content/uploads/2014/04/yayomg-tiny-bunny.png', 
+	  //     description: 'Meep!' 
+	  //   },
+	  //   { 
+	  //     title: 'Adorable Onslaught', 
+	  //     url: 'http://static.quizur.com/i/b/56ef08924fe165.39337854hqdefault.jpg', 
+	  //     description: 'Wuv me!' 
+	  //   },
+	  //   { 
+	  //     title: 'Woo-woo-woo!', 
+	  //     url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg', 
+	  //     description: 'Up!' 
+	  //   }
+	
+	  // ];
+	
+	  bunnies.get().then(function (bunnies) {
+	    _this.bunnies = bunnies;
+	  });
+	
+	  this.remove = function (bunny) {
+	    bunnies.remove(bunny._id).then(function () {
+	      var index = _this.bunnies.indexOf(bunny);
+	      if (index > -1) _this.bunnies.splice(index, 1);
+	    });
+	  };
+	
+	  this.add = function (bunny) {
+	    bunnies.add(bunny).then(function (saved) {
+	      _this.bunnies.push(saved);
+	    });
+	  };
 	
 	  this.toggleText = function () {
 	    console.log('toggleText');
@@ -33073,7 +33107,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  <section>\n    <button ng-click=\"app.toggleText()\">BunnyLinks</button>\n    <button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n    <button ng-click=\"app.toggleBig()\">BunnyBig</button>\n  </section>\n\n  <section>\n  <ul ng-show=\"app.showText\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-text\n      bunny=\"bunny\">\n      </bunny-text>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showThumbs\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-thumbs\n      bunny=\"bunny\">\n      </bunny-thumbs>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showBig\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-big\n      bunny=\"bunny\">\n      </bunny-big>\n    </li>\n  </ul>\n  </section>\n</article>\n";
+	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  \n  <section>\n    <button ng-click=\"app.toggleText()\">BunnyLinks</button>\n    <button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n    <button ng-click=\"app.toggleBig()\">BunnyBig</button>\n\n  </section>\n\n  <section>\n    <ul ng-show=\"app.showText\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-text\n        bunny=\"bunny\">\n        </bunny-text>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"app.showThumbs\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-thumbs\n        bunny=\"bunny\">\n        </bunny-thumbs>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"app.showBig\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-big\n        bunny=\"bunny\">\n        </bunny-big>\n      </li>\n      \n    </ul>\n  </section>\n\n</article>\n";
 
 /***/ },
 /* 14 */
@@ -33196,6 +33230,97 @@
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"thumbs":"_1nXR0zgSVJ36dPG9u7BRq2"};
+
+/***/ },
+/* 23 */,
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _angular = __webpack_require__(1);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _camelcase = __webpack_require__(8);
+	
+	var _camelcase2 = _interopRequireDefault(_camelcase);
+	
+	var _path = __webpack_require__(9);
+	
+	var _path2 = _interopRequireDefault(_path);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var context = __webpack_require__(25);
+	
+	var _module = _angular2.default.module('services', []);
+	
+	context.keys().forEach(function (key) {
+	
+	  var name = (0, _camelcase2.default)(_path2.default.basename(key, '.js'));
+	
+	  _module.factory(name, context(key).default);
+	});
+	
+	exports.default = _module.name;
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var map = {
+		"./bunny-service.js": 26
+	};
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 25;
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = bunnyService;
+	bunnyService.$inject = ['$http', 'apiUrl'];
+	
+	function bunnyService($http, apiUrl) {
+	  return {
+	    get: function get() {
+	      return $http.get(apiUrl + '/bunnies').then(function (res) {
+	        return res.data;
+	      });
+	    },
+	    remove: function remove(id) {
+	      return $http.delete(apiUrl + '/bunnies/' + id).then(function (res) {
+	        return res.data;
+	      });
+	    },
+	    add: function add(bunny) {
+	      return $http.post(apiUrl + '/bunnies', bunny).then(function (res) {
+	        return res.data;
+	      });
+	    }
+	  };
+	}
 
 /***/ }
 /******/ ]);
