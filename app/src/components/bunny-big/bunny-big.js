@@ -4,11 +4,16 @@ import styles from './bunny-big.css';
 export default {
   template,
   bindings: {
-    bunny: '='
+    bunny: '=',
+    remove: '<'
   },
   controller
 };
 
 function controller() {
   this.styles = styles;
+
+  this.delete = () => {
+    this.remove(this.bunny);
+  };
 }

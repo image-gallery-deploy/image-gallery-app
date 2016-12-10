@@ -2,9 +2,9 @@
   <h1>Welcome to the Kingdom of Kuddle</h1>
   
   <section  ng-init="view = 'text'">
-    <button ng-click="view = 'text'">BunnyLinks</button>
-    <button ng-click="view = 'thumbs'">BunnyThumbs</button>
-    <button ng-click="view = 'big'">BunnyBig</button>
+    <button ng-class="button" ng-click="view = 'text'">BunnyLinks</button>
+    <button ng-class="button" ng-click="view = 'thumbs'">BunnyThumbs</button>
+    <button ng-class="button" ng-click="view = 'big'">BunnyBig</button>
 
   </section>
 
@@ -30,11 +30,14 @@
     <ul ng-show="view === 'big'">
       <li ng-repeat="bunny in app.bunnies">
         <bunny-big
-        bunny="bunny">
+        bunny="bunny"
+        remove="app.remove">
         </bunny-big>
       </li>
       
     </ul>
   </section>
+
+<bunnify></bunnify>
 
 </article>
