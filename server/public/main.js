@@ -33080,34 +33080,13 @@
 	      _this.bunnies.push(saved);
 	    });
 	  };
-	
-	  this.toggleText = function () {
-	    console.log('toggleText');
-	    _this.showText = true;
-	    _this.showThumbs = false;
-	    _this.showBig = false;
-	  };
-	
-	  this.toggleThumbs = function () {
-	    console.log('toggleThumbs');
-	    _this.showText = false;
-	    _this.showThumbs = true;
-	    _this.showBig = false;
-	  };
-	
-	  this.toggleBig = function () {
-	    console.log('toggleBig');
-	    _this.showText = false;
-	    _this.showThumbs = false;
-	    _this.showBig = true;
-	  };
 	}
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  \n  <section>\n    <button ng-click=\"app.toggleText()\">BunnyLinks</button>\n    <button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n    <button ng-click=\"app.toggleBig()\">BunnyBig</button>\n\n  </section>\n\n  <section>\n    <ul ng-show=\"app.showText\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-text\n        bunny=\"bunny\">\n        </bunny-text>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"app.showThumbs\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-thumbs\n        bunny=\"bunny\">\n        </bunny-thumbs>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"app.showBig\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-big\n        bunny=\"bunny\">\n        </bunny-big>\n      </li>\n      \n    </ul>\n  </section>\n\n</article>\n";
+	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  \n  <section  ng-init=\"view = 'text'\">\n    <button ng-class=\"button\" ng-click=\"view = 'text'\">BunnyLinks</button>\n    <button ng-class=\"button\" ng-click=\"view = 'thumbs'\">BunnyThumbs</button>\n    <button ng-class=\"button\" ng-click=\"view = 'big'\">BunnyBig</button>\n\n  </section>\n\n  <section>\n    <ul ng-show=\"view === 'text'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-text\n        bunny=\"bunny\">\n        </bunny-text>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'thumbs'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-thumbs\n        bunny=\"bunny\">\n        </bunny-thumbs>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'big'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-big\n        bunny=\"bunny\"\n        remove=\"app.remove\">\n        </bunny-big>\n      </li>\n      \n    </ul>\n  </section>\n\n<bunnify></bunnify>\n\n</article>\n";
 
 /***/ },
 /* 14 */
@@ -33132,28 +33111,35 @@
 	exports.default = {
 	  template: _bunnyBig2.default,
 	  bindings: {
-	    bunny: '='
+	    bunny: '=',
+	    remove: '<'
 	  },
 	  controller: controller
 	};
 	
 	
 	function controller() {
+	  var _this = this;
+	
 	  this.styles = _bunnyBig4.default;
+	
+	  this.delete = function () {
+	    _this.remove(_this.bunny);
+	  };
 	}
 
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<p>{{$ctrl.bunny.description}}</p>\n";
+	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<div>\n  <span>{{$ctrl.bunny.description}}</span>\n  <button ng-class=\"$ctrl.styles.button\" ng-click=\"$ctrl.delete()\">DEBUNNIFY</button>\n</div>\n";
 
 /***/ },
 /* 16 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"big":"_1-SFMhmWvF0zX_1JXsyHXi"};
+	module.exports = {"big":"_1-SFMhmWvF0zX_1JXsyHXi","button":"KmpRfYJHUBfKIERIy5QoP"};
 
 /***/ },
 /* 17 */,
