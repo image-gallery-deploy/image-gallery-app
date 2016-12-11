@@ -33,9 +33,31 @@ a {
 section {
   margin: 0 auto;
   width: max-content;
-}._21aIS_BYawsfYU3pUZU1s2{
+
+}
+._21aIS_BYawsfYU3pUZU1s2{
   font-family: sans-serif;
-}._1-SFMhmWvF0zX_1JXsyHXi {
+  margin: 3em auto auto 3em;
+  border-top: 1px solid lightgray;
+}
+
+._21aIS_BYawsfYU3pUZU1s2 > h4{
+  margin: .25em auto;
+  float: right;
+}
+
+._21aIS_BYawsfYU3pUZU1s2 > div > label{
+  float: right;
+}
+
+._21aIS_BYawsfYU3pUZU1s2 > div > label > input{
+  margin: 0.5em;
+}
+
+._21aIS_BYawsfYU3pUZU1s2 > button{
+  float: right;
+}
+._1-SFMhmWvF0zX_1JXsyHXi {
   border: solid black 1px;
   max-width: 25%;
 }

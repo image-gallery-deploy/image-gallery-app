@@ -33065,7 +33065,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <div>\n      <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n    </div>\n  </section>\n";
+	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <h4>ADD MY BUNNIES</h4>\n    <div>\n      <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n    </div>\n    <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n  </section>\n";
 
 /***/ },
 /* 14 */
@@ -33103,36 +33103,6 @@
 	function controller(bunnies) {
 	  var _this = this;
 	
-	  // // TODO: make this into a function to fetch bunnies from the db via a $http service
-	  // this.bunnies = [
-	  //   { 
-	  //     title: 'Snuggly-wuggly', 
-	  //     url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg', 
-	  //     description: 'Aren\'t I the little dickens!' 
-	  //   },
-	  //   { 
-	  //     title: 'Wudgy-wudgy', 
-	  //     url: 'http://cdn.wallpapersafari.com/48/78/wf3rOl.jpg', 
-	  //     description: 'Wiffle-wiffle!' 
-	  //   },
-	  //   { 
-	  //     title: 'Ooooooh!', 
-	  //     url: 'https://media.yayomg.com/wp-content/uploads/2014/04/yayomg-tiny-bunny.png', 
-	  //     description: 'Meep!' 
-	  //   },
-	  //   { 
-	  //     title: 'Adorable Onslaught', 
-	  //     url: 'http://static.quizur.com/i/b/56ef08924fe165.39337854hqdefault.jpg', 
-	  //     description: 'Wuv me!' 
-	  //   },
-	  //   { 
-	  //     title: 'Woo-woo-woo!', 
-	  //     url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg', 
-	  //     description: 'Up!' 
-	  //   }
-	
-	  // ];
-	
 	  bunnies.get().then(function (bunnies) {
 	    _this.bunnies = bunnies;
 	  });
@@ -33155,7 +33125,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  \n  <section  ng-init=\"view = 'text'\">\n    <button ng-class=\"button\" ng-click=\"view = 'text'\">BunnyLinks</button>\n    <button ng-class=\"button\" ng-click=\"view = 'thumbs'\">BunnyThumbs</button>\n    <button ng-class=\"button\" ng-click=\"view = 'big'\">BunnyBig</button>\n\n  </section>\n\n  <section>\n    <ul ng-show=\"view === 'text'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-text\n          bunny=\"bunny\">\n        </bunny-text>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'thumbs'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-thumbs\n          bunny=\"bunny\">\n        </bunny-thumbs>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'big'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-big\n          bunny=\"bunny\"\n          remove=\"app.remove\">\n        </bunny-big>\n      </li>\n      \n    </ul>\n  </section>\n\n<bunnify></bunnify>\n\n</article>\n";
+	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  \n  <section  ng-init=\"view = 'text'\">\n    <button ng-class=\"button\" ng-click=\"view = 'text'\">BunnyLinks</button>\n    <button ng-class=\"button\" ng-click=\"view = 'thumbs'\">BunnyThumbs</button>\n    <button ng-class=\"button\" ng-click=\"view = 'big'\">BunnyBig</button>\n\n  </section>\n\n  <section>\n    <ul ng-show=\"view === 'text'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-text\n          bunny=\"bunny\">\n        </bunny-text>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'thumbs'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-thumbs\n          bunny=\"bunny\">\n        </bunny-thumbs>\n      </li>\n      \n    </ul>\n\n    <ul ng-show=\"view === 'big'\">\n      <li ng-repeat=\"bunny in app.bunnies\">\n        <bunny-big\n          bunny=\"bunny\"\n          remove=\"app.remove\">\n        </bunny-big>\n      </li>\n      \n    </ul>\n  </section>\n\n<bunnify\n  bunny=\"bunny\"\n  add=\"app.add\">\n</bunnify>\n\n</article>\n";
 
 /***/ },
 /* 18 */
