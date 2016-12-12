@@ -72,4 +72,23 @@ describe('handles REST calls from main controller', () => {
     $httpBackend.flush();
 
   });
+
+  it('completes remove request', done => {
+
+    const bunny = 'bip';
+
+    $httpBackend
+      .expectDELETE( '/api/bunnies/bip' )
+      .respond( bunny );
+
+    bunnyService.remove( bunny )
+      .then(deletedBunny => {
+        assert.deepEqual( deletedBunny, bunny );
+        done();
+      })
+      .catch(done);
+
+    $httpBackend.flush();
+
+  });
 });

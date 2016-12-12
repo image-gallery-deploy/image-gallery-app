@@ -74,7 +74,6 @@ describe('test main component', () => {
     it('removes bunnies', done => {
       const component = $component('bunnyApp', { bunnyService });
       
-      // console.log('bunnies[2]._id', bunnies[2]._id);
       component.remove( bunny );
 
       setTimeout(() => {
@@ -83,7 +82,7 @@ describe('test main component', () => {
         done();
 
       });
-      
+
     });
   });
 });

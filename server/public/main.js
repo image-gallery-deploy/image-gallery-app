@@ -33107,16 +33107,16 @@
 	    _this.bunnies = bunnies;
 	  });
 	
+	  this.add = function (bunny) {
+	    bunnies.add(bunny).then(function (saved) {
+	      _this.bunnies.push(saved);
+	    });
+	  };
+	
 	  this.remove = function (bunny) {
 	    bunnies.remove(bunny._id).then(function () {
 	      var index = _this.bunnies.indexOf(bunny);
 	      if (index > -1) _this.bunnies.splice(index, 1);
-	    });
-	  };
-	
-	  this.add = function (bunny) {
-	    bunnies.add(bunny).then(function (saved) {
-	      _this.bunnies.push(saved);
 	    });
 	  };
 	}
