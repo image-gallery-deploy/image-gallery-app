@@ -81,8 +81,9 @@ describe('test main component', () => {
         assert.equal( bunnies.length, 2 );
         assert.equal( bunnies.indexOf( bunny ), -1 );
         done();
-      });
 
+      });
+      
     });
   });
 });
