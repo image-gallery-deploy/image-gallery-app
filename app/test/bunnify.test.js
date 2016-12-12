@@ -27,7 +27,7 @@ describe('test UI add component', () => {
 
     };
 
-    it('adds bunnies', done => {
+    it('calls bunnyApp.addBunny()', done => {
       const component = $component('bunnify', { bunnyApp });
       
       component.add = () => bunny;

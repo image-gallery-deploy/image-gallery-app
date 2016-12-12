@@ -1,5 +1,5 @@
 
-describe('test UI add component', () => {
+describe('test UI remove component', () => {
 
   const { assert } = chai;
 
@@ -12,7 +12,7 @@ describe('test UI add component', () => {
     $component = $componentController;
   }));
 
-  describe('calls bunny-app\'s add() fn', () => {
+  describe('calls bunny-app\'s remove() fn', () => {
 
     const bunny = { 
       title: 'Ooooooh!', 
@@ -28,7 +28,7 @@ describe('test UI add component', () => {
 
     };
 
-    it('removes bunnies', done => {
+    it('calls bunnyApp.remove()', done => {
       const component = $component('bunnyBig', { bunnyApp });
       
       component.remove = () => bunny;
