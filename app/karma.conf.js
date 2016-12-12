@@ -32,7 +32,7 @@ module.exports = function(config) {
 
     // browsers to start
     // see https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ 'Chrome', 'Safari' ],
+    browsers: [ 'Chrome'/*, 'Safari'*/ ],
 
     // test result reporter to use
     // possible reporters: 'dots', 'progress'
@@ -54,7 +54,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // on or off; if true, Karma captures browsers, runs tests and exits
-    singleRun: false,
+    singleRun: /*false*/true,
 
     // concurrency level
     // max no. of browsers that should be started at one time
