@@ -2,6 +2,7 @@ const express = require( 'express' );
 const app = express();
 const errorHandler = require( './error-handler' );
 const morgan = require( 'morgan' );
+// const path = require( 'path' );
 
 const bunnies = require( './routes/bunnies' );
 
@@ -13,6 +14,8 @@ if( process.env.NODE_ENV === 'production' ) {
     else res.redirect( `https://${req.hostname}${req.url}` );
   });
 }
+
+app.use(express.static('./public'));
 
 app.use( (req, res, next) => {
   const url = '*';
