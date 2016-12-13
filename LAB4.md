@@ -9,15 +9,12 @@ Your app should have the following pages:
 * images "page"
 * about "page" (mostly static content)
 
-You should also handle view state (detail, thumbnail, gallery) and it should load correctly
-from the url
-
 # Bonus
 
-* Create a nested view in your about page that toggles between three "About"
-topics (fictitious developers, or three about "facts")
+* Play around with a nested view
+* Play around with named views
 
 # Rubric
-Route/State design and implementation *5pts*
-View State route parameters *3pts*
-Code Quality/Project Org *2pts*
+
+Route/State design and implementation *7pts*
+Code Quality/Project Org *3pts*
