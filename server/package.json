@@ -4,10 +4,11 @@
   "description": "cute bunny gallery",
   "main": "index.js",
   "scripts": {
-    "test": "return 0",
+    "start": "nodemon server.js",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "start": "nodemon server.js"
+    "test": "MONGODB_URI=mongodb://localhost/bunny-test mocha",
+    "test:watch":"MONGODB_URI=mongodb://localhost/bunny-test nodemon --exec mocha"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,6 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
-    "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.5",
@@ -41,7 +41,6 @@
     "chai-http": "^3.0.0",
     "eslint": "^3.11.1",
     "mocha": "^3.2.0",
-    "morgan": "^1.7.0",
     "nodemon": "^1.9.2"
   }
 }
