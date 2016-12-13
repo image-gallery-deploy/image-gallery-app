@@ -11,7 +11,7 @@ describe('test bunnies resource route', () => {
 
   before(done => {
     const drop = () => connection.db.dropDatabase( done );
-    if(connection.readState === 1) drop( done );
+    if(connection.readyState === 1) drop( done );
     else connection.on( 'open', drop );
   });
 
