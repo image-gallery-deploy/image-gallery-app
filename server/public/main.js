@@ -33404,7 +33404,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <h4>ADD MY BUNNIES</h4>\n    <div>\n      <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n    </div>\n    <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n  </section>\n";
+	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <h4>ADD MY BUNNIES</h4>\n    <div>\n      <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n    </div>\n    <div>\n      <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n    </div>\n    <div>\n      <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n    </div>\n    <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n  </section>\n";
 
 /***/ },
 /* 14 */
@@ -33441,7 +33441,7 @@
 	
 	
 	// module
-	exports.push([module.id, "._3cauvEe8KjlFJZBxByqJIa {\n  font-family: sans-serif;\n  margin: 3em auto auto 3em;\n  border-top: 1px solid lightgray; }\n\n._3cauvEe8KjlFJZBxByqJIa > h4 {\n  margin: .25em auto;\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > label {\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > label > input {\n  margin: 0.5em; }\n\n._3cauvEe8KjlFJZBxByqJIa > button {\n  float: right; }\n", "", {"version":3,"sources":["/./src/components/bunnify/src/components/bunnify/bunnify.scss"],"names":[],"mappings":"AAAA;EACE,wBAAuB;EACvB,0BAAyB;EACzB,gCAA+B,EAChC;;AAED;EACE,mBAAkB;EAClB,aAAY,EACb;;AAED;EACE,aAAY,EACb;;AAED;EACE,cAAa,EACd;;AAED;EACE,aAAY,EACb","file":"bunnify.scss","sourcesContent":[":local(.bunnify){\n  font-family: sans-serif;\n  margin: 3em auto auto 3em;\n  border-top: 1px solid lightgray;\n}\n\n:local(.bunnify > h4){\n  margin: .25em auto;\n  float: right;\n}\n\n:local(.bunnify > div > label){\n  float: right;\n}\n\n:local(.bunnify > div > label > input){\n  margin: 0.5em;\n}\n\n:local(.bunnify > button){\n  float: right;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "._3cauvEe8KjlFJZBxByqJIa {\n  font-family: sans-serif;\n  margin: 3em auto auto 3em;\n  border: 1px solid lightgray; }\n\n._3cauvEe8KjlFJZBxByqJIa > h4 {\n  margin: .25em auto;\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > label {\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > label > input {\n  margin: 0.5em; }\n\n._3cauvEe8KjlFJZBxByqJIa > button {\n  float: right; }\n", "", {"version":3,"sources":["/./src/components/bunnify/src/components/bunnify/bunnify.scss"],"names":[],"mappings":"AAAA;EACE,wBAAuB;EACvB,0BAAyB;EACzB,4BAA2B,EAC5B;;AAED;EACE,mBAAkB;EAClB,aAAY,EACb;;AAED;EACE,aAAY,EACb;;AAED;EACE,cAAa,EACd;;AAED;EACE,aAAY,EACb","file":"bunnify.scss","sourcesContent":[":local(.bunnify){\n  font-family: sans-serif;\n  margin: 3em auto auto 3em;\n  border: 1px solid lightgray;\n}\n\n:local(.bunnify > h4){\n  margin: .25em auto;\n  float: right;\n}\n\n:local(.bunnify > div > label){\n  float: right;\n}\n\n:local(.bunnify > div > label > input){\n  margin: 0.5em;\n}\n\n:local(.bunnify > button){\n  float: right;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 	exports.locals = {

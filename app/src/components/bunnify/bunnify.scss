@@ -1,22 +1,34 @@
+@import 'b-radius';
+@import 'hover';
+
 :local(.bunnify){
-  font-family: sans-serif;
-  margin: 3em auto auto 3em;
-  border-top: 1px solid lightgray;
+  position: absolute;
+  margin: 3rem auto auto 3rem;
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  @include b-radius(2%);
+  
+  &:hover {@include hover;}
 }
 
-:local(.bunnify > h4){
-  margin: .25em auto;
+:local(.bunnify > div) {
+  position: relative;
+  height: content-max;
+}
+
+:local(.bunnify > div > h4) {
+  margin: .25rem auto;
   float: right;
 }
 
-:local(.bunnify > div > label){
+:local(.bunnify > div > div > label) {
   float: right;
 }
 
-:local(.bunnify > div > label > input){
-  margin: 0.5em;
+:local(.bunnify > div > div > label > input) {
+  margin: 0.5rem;
 }
 
-:local(.bunnify > button){
+:local(.bunnify > div > button) {
   float: right;
 }
