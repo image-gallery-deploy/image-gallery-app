@@ -14,10 +14,11 @@ You can either:
 * Toggling between "detail", "thumbnail" and "gallery" view should still work 
 
 # Rubric
-Route/State Design and Implementation *7pts*
-Route parameters and component data passing *7pts*
-Handle multiple albums *5pts*
-Code Quality and Organization *2pts*
+
+* Route/State Design and Implementation *7pts*
+* Route parameters and component data passing *7pts*
+* Handle multiple albums *5pts*
+* Code Quality and Organization *2pts*
 
 
 
