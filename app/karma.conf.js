@@ -70,7 +70,7 @@ module.exports = function(config) {
       }
     };
 
-    options.browsers = [ 'Chrome_travis_ci', 'Firefox' ];
+    options.browsers = [ 'Chrome_travis_ci' ];
     options.singleRun = true;
 
   }
