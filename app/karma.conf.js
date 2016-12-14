@@ -13,7 +13,7 @@ module.exports = function(config) {
 
     // list of files and patterns to load
     files: [
-      './src/app.js',
+      './src/main.js',
       './node_modules/angular-mocks/angular-mocks.js',
       './test/**/*.js'
     ],
@@ -26,7 +26,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to browser 
     // see https://npmjs.org/browse/keyword/karma-preprocessor for available preprocessors
     preprocessors: {
-      './src/app.js': [ 'webpack' ],
+      './src/main.js': [ 'webpack' ],
       './test/**/*.js/': [ 'babel' ]
     },
 
