@@ -1,4 +1,4 @@
-routes.inject = [ '$stateProvider', '$urlRouterProvider' ];
+routes.$inject = [ '$stateProvider', '$urlRouterProvider' ];
 
 export default function routes($stateProvider, $urlRouterProvider) {
   $stateProvider.state({
@@ -12,7 +12,21 @@ export default function routes($stateProvider, $urlRouterProvider) {
     name: 'about',
     url: '/about',
     component: 'about'
-    
+
+  });
+
+  $stateProvider.state({
+    name: 'about.info',
+    url: '/info',
+    component: 'aboutInfo'
+
+  });
+
+  $stateProvider.state({
+    name: 'about.contact',
+    url: '/contact',
+    component: 'aboutContact'
+
   });
 
   $stateProvider.state({

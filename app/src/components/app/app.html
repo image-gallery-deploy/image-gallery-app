@@ -1,15 +1,17 @@
 <article>
   <h1>Welcome to the Kingdom of Kuddle</h1>
 
-  <header>
-    <button ui-sref="welcome" ui-sref-active="active-class">Home</button>
-    <button ui-sref="bunnies" ui-sref-active="active-class">Bunnies</button>
-    <button ui-sref="about" ui-sref-active="active-class">About</button>  
-  </header>
+  <section>
+    <div>
+      <button ui-sref="welcome" ui-sref-active="active">Home</button>
+      <button ui-sref="bunnies" ui-sref-active="active">Bunnies</button>
+      <button ui-sref="about" ui-sref-active="active">About</button>  
 
-  <main>
-    <ui-view></ui-view>
-    <bunny-app></bunny-app>
-  </main>
+    </div>
 
+    <div>
+      <ui-view></ui-view>
+
+    </div>
+  </section>
 </article>
