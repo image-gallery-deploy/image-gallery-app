@@ -32,7 +32,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
   $stateProvider.state({
     name: 'bunnies',
     url: '/bunnies',
-    component: 'bunny-app'
+    component: 'bunnyApp'
 
   });
 
