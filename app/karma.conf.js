@@ -2,7 +2,7 @@ const webpackConfig = require('./webpack.config');
 webpackConfig.entry = {};
 
 module.exports = function(config) {
-  config.set({
+  const options = {
 
     // base path to use in resolving, e.g., file or exclusion patterns
     basePath: '',
@@ -32,7 +32,7 @@ module.exports = function(config) {
 
     // browsers to start
     // see https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ 'Chrome'/*, 'Safari'*/ ],
+    browsers: [ 'Chrome', 'Safari' ],
 
     // test result reporter to use
     // possible reporters: 'dots', 'progress'
@@ -60,6 +60,21 @@ module.exports = function(config) {
     // max no. of browsers that should be started at one time
     concurrency: Infinity
     
-  });
+  };
+
+  if(process.env.TRAVIS) {
+    options.customLaunchers = {
+      Chrome_travis_ci: {
+        base: 'Chrome', 
+        flags: [ '--no-sandbox' ]
+      }
+    };
+
+    options.browsers = [ 'Chrome_travis_ci', 'Firefox' ];
+    options.singleRun = true;
+
+  }
+
+  config.set( options );
 
 };
