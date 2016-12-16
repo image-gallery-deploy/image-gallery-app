@@ -12,18 +12,18 @@ describe('test UI remove component', () => {
     $component = $componentController;
   }));
 
-  describe('calls bunny-app\'s remove() fn', () => {
+  describe('calls image-app\'s remove() fn', () => {
 
-    const bunny = { 
+    const image = { 
       title: 'Miffy', 
       url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
       description: 'Sanrio cease and desist!' 
     };
 
-    it('calls bunnyApp.remove()', () => {
-      const component = $component('bunnyBig', {});
+    it('calls imageApp.remove()', () => {
+      const component = $component('imageBig', {});
 
-      component.bunny = { 
+      component.image = { 
         title: 'Miffy', 
         url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
         description: 'Sanrio cease and desist!' 
@@ -34,7 +34,7 @@ describe('test UI remove component', () => {
 
       component.delete();
 
-      assert.deepEqual( result, bunny );
+      assert.deepEqual( result, image );
         
     });
     

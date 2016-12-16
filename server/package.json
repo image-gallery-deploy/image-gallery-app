@@ -1,14 +1,14 @@
 {
   "name": "image-gallery",
   "version": "1.0.0",
-  "description": "cute bunny gallery",
+  "description": "cute image gallery",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "MONGODB_URI=mongodb://localhost/bunny-test mocha",
-    "test:watch":"MONGODB_URI=mongodb://localhost/bunny-test nodemon --exec mocha"
+    "test": "MONGODB_URI=mongodb://localhost/image-test mocha",
+    "test:watch":"MONGODB_URI=mongodb://localhost/image-test nodemon --exec mocha"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "cute",
-    "bunny",
+    "image",
     "gallery"
   ],
   "author": "Nathan P. Keene",

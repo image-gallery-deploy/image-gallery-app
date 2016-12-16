@@ -8,12 +8,12 @@ describe('handles REST calls from main controller', () => {
 
   );
 
-  let $httpBackend = null, bunnyService = null;
+  let $httpBackend = null, imageService = null;
 
   beforeEach(
-    angular.mock.inject((_bunnyService_, _$httpBackend_) => {
+    angular.mock.inject((_imageService_, _$httpBackend_) => {
       $httpBackend = _$httpBackend_;
-      bunnyService = _bunnyService_;
+      imageService = _imageService_;
 
     })
   );
@@ -29,17 +29,17 @@ describe('handles REST calls from main controller', () => {
   
   it('completes get request', done => {
 
-    const bunnies = ['foo', 'bar', 'baz'];
+    const images = ['foo', 'bar', 'baz'];
 
     $httpBackend
-      .expectGET( '/api/bunnies' )
-      .respond( bunnies );
+      .expectGET( '/api/images' )
+      .respond( images );
 
-    bunnyService.get()
-      .then(allBunnies => {
+    imageService.get()
+      .then(allImages => {
         // must deepEqual to compare orig. mock data with 
         // $httpBackend-serialized mock res
-        assert.deepEqual( allBunnies, bunnies );
+        assert.deepEqual( allImages, images );
         done();
 
       })
@@ -52,19 +52,19 @@ describe('handles REST calls from main controller', () => {
 
   it('completes add request', done => {
 
-    const bunny = { 
+    const image = { 
       title: 'Miffy', 
       url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
       description: 'Sanrio cease and desist!' 
     };
 
     $httpBackend
-      .expectPOST( '/api/bunnies', bunny )
-      .respond( bunny );
+      .expectPOST( '/api/images', image )
+      .respond( image );
 
-    bunnyService.add( bunny )
-      .then(savedBunny => {
-        assert.deepEqual( savedBunny, bunny );
+    imageService.add( image )
+      .then(savedImage => {
+        assert.deepEqual( savedImage, image );
         done();
       })
       .catch(done);
@@ -75,15 +75,15 @@ describe('handles REST calls from main controller', () => {
 
   it('completes remove request', done => {
 
-    const bunny = 'bip';
+    const image = 'bip';
 
     $httpBackend
-      .expectDELETE( '/api/bunnies/bip' )
-      .respond( bunny );
+      .expectDELETE( '/api/images/bip' )
+      .respond( image );
 
-    bunnyService.remove( bunny )
-      .then(deletedBunny => {
-        assert.deepEqual( deletedBunny, bunny );
+    imageService.remove( image )
+      .then(deletedImage => {
+        assert.deepEqual( deletedImage, image );
         done();
       })
       .catch(done);

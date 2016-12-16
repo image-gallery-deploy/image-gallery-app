@@ -3,43 +3,43 @@ const router = express.Router();
 
 const bodyParser = require('body-parser').json();
 
-const Bunny = require('../models/bunny');
+const Image = require('../models/image');
 
 router
     .get('/', (req, res, next) => {
-      console.log('Bunny GET route...');
+      console.log('Image GET route...');
       const query = {};
 
       // support sending a nav bar query using `?`
       if(req.query.name) query.title = req.query.title;
       if(req.query._id) query._id = req.query._id;
 
-      Bunny.find(query)
-        .then((bunnies) => res.send(bunnies))
+      Image.find(query)
+        .then((images) => res.send(images))
         .catch((err) => {
           next(err);
         });
     })
     .post('/', bodyParser, (req, res, next) => {
 
-      new Bunny(req.body).save()
-        .then(bunny => res.send(bunny))
+      new Image(req.body).save()
+        .then(image => res.send(image))
         .catch((err) => {
           next(err);
         });
     })
     .get('/:id', (req, res, next) => {
-      Bunny.findById(req.params.id)
-        .then(bunny => res.send(bunny))
+      Image.findById(req.params.id)
+        .then(image => res.send(image))
         .catch(next);
     })
     .put('/:id', bodyParser, (req, res, next) => {
-      Bunny.findByIdAndUpdate(req.params.id, req.body, {new: true})
+      Image.findByIdAndUpdate(req.params.id, req.body, {new: true})
         .then(saved => res.send(saved))
         .catch(next);
     })
     .delete('/:id', (req, res, next) => {
-      Bunny.findByIdAndRemove(req.params.id)
+      Image.findByIdAndRemove(req.params.id)
         .then(deleted => res.send(deleted))
         .catch(next);
     });

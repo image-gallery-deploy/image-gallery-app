@@ -1,5 +1,5 @@
-import template from './bunnify.html';
-import styles from './bunnify.scss';
+import template from './imagify.html';
+import styles from './imagify.scss';
 
 export default {
   template,
@@ -21,7 +21,7 @@ function controller() {
 
   this.reset();
 
-  this.addBunny = () => {
+  this.addImage = () => {
     this.add({
       title: this.title,
       url: this.url,

@@ -7,7 +7,7 @@ const connection = require( '../lib/setup-mongoose' );
 
 const app = require( '../lib/app' );
 
-describe('test bunnies resource route', () => {
+describe('test images resource route', () => {
 
   before(done => {
     const drop = () => connection.db.dropDatabase( done );
@@ -17,17 +17,17 @@ describe('test bunnies resource route', () => {
 
   const request = chai.request( app );
 
-  const bunny = { 
+  const image = { 
     title: 'Miffy', 
     url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
     description: 'Sanrio cease and desist!' 
   };
 
-  var bunnyResult = null;
+  var imageResult = null;
 
   it('completes GET request on empty db', done => {
     request
-      .get( '/api/bunnies' )
+      .get( '/api/images' )
       .then(res => {
         assert.deepEqual( res.body, [] );
         done();
@@ -38,12 +38,12 @@ describe('test bunnies resource route', () => {
 
   it('completes POST request', done => {
     request 
-      .post( '/api/bunnies' )
-      .send( bunny )
+      .post( '/api/images' )
+      .send( image )
       .then(res => {
-        bunnyResult = res.body;
-        bunny.__v = 0;
-        bunny._id = bunnyResult._id;
+        imageResult = res.body;
+        image.__v = 0;
+        image._id = imageResult._id;
         done();
       })
       .catch( done );
@@ -51,9 +51,9 @@ describe('test bunnies resource route', () => {
 
   it('completes GET request for all in collection', done => {
     request
-      .get(  '/api/bunnies')
+      .get(  '/api/images')
       .then(res => {
-        assert.deepEqual( res.body, [bunny] );
+        assert.deepEqual( res.body, [image] );
         done();
       })
       .catch( done );
@@ -61,11 +61,11 @@ describe('test bunnies resource route', () => {
 
   it('completes DELETE /:id request on individual item in collection', done => {
     request
-      .delete( `/api/bunnies/${bunny._id}` )
-      // .query( {_id:bunny._id} )
+      .delete( `/api/images/${image._id}` )
+      // .query( {_id:image._id} )
       .then(res => {
-        bunnyResult = res.body;
-        assert.deepEqual( bunnyResult, bunny );
+        imageResult = res.body;
+        assert.deepEqual( imageResult, image );
         done();
       })
       .catch( done );

@@ -30,9 +30,9 @@ export default function routes($stateProvider, $urlRouterProvider) {
   });
 
   $stateProvider.state({
-    name: 'bunnies',
-    url: '/bunnies',
-    component: 'bunnyApp'
+    name: 'images',
+    url: '/images',
+    component: 'imageApp'
 
   });
 

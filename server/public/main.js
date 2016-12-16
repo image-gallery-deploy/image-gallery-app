@@ -33001,11 +33001,11 @@
 		"./about/about-info.js": 13,
 		"./about/about.js": 14,
 		"./app/app.js": 15,
-		"./bunnify/bunnify.js": 19,
-		"./bunny-app/bunny-app.js": 23,
-		"./bunny-big/bunny-big.js": 25,
-		"./bunny-text/bunny-text.js": 29,
-		"./bunny-thumbs/bunny-thumbs.js": 31,
+		"./image-app/image-app.js": 19,
+		"./image-big/image-big.js": 21,
+		"./image-text/image-text.js": 25,
+		"./image-thumbs/image-thumbs.js": 27,
+		"./imagify/imagify.js": 31,
 		"./welcome/welcome.js": 35
 	};
 	function webpackContext(req) {
@@ -33058,7 +33058,7 @@
 	  value: true
 	});
 	exports.default = {
-	  template: "<h1>About the Bunnies Project</h1>\n\n<button ui-sref=\"about.info\" ui-sref-active=\"active\">Info</button>\n<button ui-sref=\"about.contact\" ui-sref-active=\"active\">Contact</button>\n\n<ui-view></ui-view>"
+	  template: "<h1>About the Images Project</h1>\n\n<button ui-sref=\"about.info\" ui-sref-active=\"active\">Info</button>\n<button ui-sref=\"about.contact\" ui-sref-active=\"active\">Contact</button>\n\n<ui-view></ui-view>"
 	};
 
 /***/ },
@@ -33085,7 +33085,7 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n\n  <section>\n    <div>\n      <button ui-sref=\"welcome\" ui-sref-active=\"active\">Home</button>\n      <button ui-sref=\"bunnies\" ui-sref-active=\"active\">Bunnies</button>\n      <button ui-sref=\"about\" ui-sref-active=\"active\">About</button>  \n\n    </div>\n\n    <div>\n      <ui-view></ui-view>\n\n    </div>\n  </section>\n</article>";
+	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n\n  <section>\n    <div>\n      <button ui-sref=\"welcome\" ui-sref-active=\"active\">Home</button>\n      <button ui-sref=\"images\" ui-sref-active=\"active\">Images</button>\n      <button ui-sref=\"about\" ui-sref-active=\"active\">About</button>  \n\n    </div>\n\n    <div>\n      <ui-view></ui-view>\n\n    </div>\n  </section>\n</article>";
 
 /***/ },
 /* 17 */
@@ -33104,18 +33104,200 @@
 	  value: true
 	});
 	
-	var _bunnify = __webpack_require__(20);
+	var _imageApp = __webpack_require__(20);
 	
-	var _bunnify2 = _interopRequireDefault(_bunnify);
-	
-	var _bunnify3 = __webpack_require__(21);
-	
-	var _bunnify4 = _interopRequireDefault(_bunnify3);
+	var _imageApp2 = _interopRequireDefault(_imageApp);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = {
-	  template: _bunnify2.default,
+	  template: _imageApp2.default,
+	  controller: controller,
+	  controllerAs: 'app'
+	};
+	
+	
+	controller.$inject = ['imageService'];
+	
+	function controller(images) {
+	  var _this = this;
+	
+	  images.get().then(function (images) {
+	    _this.images = images;
+	  });
+	
+	  this.add = function (image) {
+	    images.add(image).then(function (saved) {
+	      _this.images.push(saved);
+	    });
+	  };
+	
+	  this.remove = function (image) {
+	    images.remove(image._id).then(function () {
+	      var index = _this.images.indexOf(image);
+	      if (index > -1) _this.images.splice(index, 1);
+	    });
+	  };
+	}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<section  ng-init=\"view = 'text'\">\n  <button ng-class=\"button\" ng-click=\"view = 'text'\">Links</button>\n  <button ng-class=\"button\" ng-click=\"view = 'thumbs'\">Thumbs</button>\n  <button ng-class=\"button\" ng-click=\"view = 'big'\">Big</button>\n\n</section>\n\n<section>\n  <ul ng-show=\"view === 'text'\">\n    <li ng-repeat=\"image in app.images\">\n      <image-text\n        image=\"image\">\n      </image-text>\n    </li>\n    \n  </ul>\n\n  <ul ng-show=\"view === 'thumbs'\">\n    <li ng-repeat=\"image in app.images\">\n      <image-thumbs\n        image=\"image\">\n      </image-thumbs>\n    </li>\n    \n  </ul>\n\n  <ul ng-show=\"view === 'big'\">\n    <li ng-repeat=\"image in app.images\">\n      <image-big\n        image=\"image\"\n        remove=\"app.remove\">\n      </image-big>\n    </li>\n    \n  </ul>\n</section>\n\n<imagify\n  image=\"image\"\n  add=\"app.add\">\n</imagify>\n\n";
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _imageBig = __webpack_require__(22);
+	
+	var _imageBig2 = _interopRequireDefault(_imageBig);
+	
+	var _imageBig3 = __webpack_require__(23);
+	
+	var _imageBig4 = _interopRequireDefault(_imageBig3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _imageBig2.default,
+	  bindings: {
+	    image: '=',
+	    remove: '<'
+	  },
+	  controller: controller
+	};
+	
+	
+	function controller() {
+	  var _this = this;
+	
+	  this.styles = _imageBig4.default;
+	
+	  this.delete = function () {
+	    _this.remove(_this.image);
+	  };
+	}
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "<h5>{{$ctrl.image.title}}</h5>\n<span><a ng-href=\"{{$ctrl.image.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.image.url}}\" alt=\"{{$ctrl.image.title}}\"></a></span>\n<div>\n  <span ng-class=\"$ctrl.styles.descpt\">{{$ctrl.image.description}}</span>\n  <button ng-class=\"$ctrl.styles.button\" ng-click=\"$ctrl.delete()\">DEIMAGIFY</button>\n</div>\n";
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"big":"hD3TwFKrWbGwkRMjRfU5u","descpt":"_3Wl9r3BXN6GyD2rXZrBlnM","button":"_1VN-smvGlmn8_CK-jOupZN"};
+
+/***/ },
+/* 24 */,
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _imageText = __webpack_require__(26);
+	
+	var _imageText2 = _interopRequireDefault(_imageText);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _imageText2.default,
+	  bindings: {
+	    image: '='
+	  }
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "<span><a ng-href=\"{{$ctrl.image.url}}\">{{$ctrl.image.title}}</a></span>";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _imageThumbs = __webpack_require__(28);
+	
+	var _imageThumbs2 = _interopRequireDefault(_imageThumbs);
+	
+	var _imageThumbs3 = __webpack_require__(29);
+	
+	var _imageThumbs4 = _interopRequireDefault(_imageThumbs3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _imageThumbs2.default,
+	  bindings: {
+	    image: '='
+	  },
+	  controller: controller
+	};
+	
+	
+	function controller() {
+	  this.styles = _imageThumbs4.default;
+	}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "<div ng-class=\"$ctrl.styles.thumbs\">\n  <h5>{{$ctrl.image.title}}</h5>\n  <span><a ng-href=\"{{$ctrl.image.url}}\"><img ng-src=\"{{$ctrl.image.url}}\" alt=\"{{$ctrl.image.title}}\"></a></span>\n\n</div>\n";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"thumbs":"_3EGr0fZdTWPc1HQibwvMVY"};
+
+/***/ },
+/* 30 */,
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _imagify = __webpack_require__(32);
+	
+	var _imagify2 = _interopRequireDefault(_imagify);
+	
+	var _imagify3 = __webpack_require__(33);
+	
+	var _imagify4 = _interopRequireDefault(_imagify3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _imagify2.default,
 	  bindings: {
 	    add: '<'
 	  },
@@ -33127,7 +33309,7 @@
 	function controller() {
 	  var _this = this;
 	
-	  this.styles = _bunnify4.default;
+	  this.styles = _imagify4.default;
 	
 	  this.reset = function () {
 	    _this.title = '';
@@ -33137,7 +33319,7 @@
 	
 	  this.reset();
 	
-	  this.addBunny = function () {
+	  this.addImage = function () {
 	    _this.add({
 	      title: _this.title,
 	      url: _this.url,
@@ -33149,199 +33331,17 @@
 	}
 
 /***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <div>\n      <h4>ADD MY BUNNIES</h4>\n      <div>\n        <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n      </div>\n      <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n    </div>\n  </section>\n";
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"bunnify":"_3cauvEe8KjlFJZBxByqJIa"};
-
-/***/ },
-/* 22 */,
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _bunnyApp = __webpack_require__(24);
-	
-	var _bunnyApp2 = _interopRequireDefault(_bunnyApp);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  template: _bunnyApp2.default,
-	  controller: controller,
-	  controllerAs: 'app'
-	};
-	
-	
-	controller.$inject = ['bunnyService'];
-	
-	function controller(bunnies) {
-	  var _this = this;
-	
-	  bunnies.get().then(function (bunnies) {
-	    _this.bunnies = bunnies;
-	  });
-	
-	  this.add = function (bunny) {
-	    bunnies.add(bunny).then(function (saved) {
-	      _this.bunnies.push(saved);
-	    });
-	  };
-	
-	  this.remove = function (bunny) {
-	    bunnies.remove(bunny._id).then(function () {
-	      var index = _this.bunnies.indexOf(bunny);
-	      if (index > -1) _this.bunnies.splice(index, 1);
-	    });
-	  };
-	}
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<section  ng-init=\"view = 'text'\">\n  <button ng-class=\"button\" ng-click=\"view = 'text'\">BunnyLinks</button>\n  <button ng-class=\"button\" ng-click=\"view = 'thumbs'\">BunnyThumbs</button>\n  <button ng-class=\"button\" ng-click=\"view = 'big'\">BunnyBig</button>\n\n</section>\n\n<section>\n  <ul ng-show=\"view === 'text'\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-text\n        bunny=\"bunny\">\n      </bunny-text>\n    </li>\n    \n  </ul>\n\n  <ul ng-show=\"view === 'thumbs'\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-thumbs\n        bunny=\"bunny\">\n      </bunny-thumbs>\n    </li>\n    \n  </ul>\n\n  <ul ng-show=\"view === 'big'\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-big\n        bunny=\"bunny\"\n        remove=\"app.remove\">\n      </bunny-big>\n    </li>\n    \n  </ul>\n</section>\n\n<bunnify\n  bunny=\"bunny\"\n  add=\"app.add\">\n</bunnify>\n\n";
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _bunnyBig = __webpack_require__(26);
-	
-	var _bunnyBig2 = _interopRequireDefault(_bunnyBig);
-	
-	var _bunnyBig3 = __webpack_require__(27);
-	
-	var _bunnyBig4 = _interopRequireDefault(_bunnyBig3);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  template: _bunnyBig2.default,
-	  bindings: {
-	    bunny: '=',
-	    remove: '<'
-	  },
-	  controller: controller
-	};
-	
-	
-	function controller() {
-	  var _this = this;
-	
-	  this.styles = _bunnyBig4.default;
-	
-	  this.delete = function () {
-	    _this.remove(_this.bunny);
-	  };
-	}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<div>\n  <span ng-class=\"$ctrl.styles.descpt\">{{$ctrl.bunny.description}}</span>\n  <button ng-class=\"$ctrl.styles.button\" ng-click=\"$ctrl.delete()\">DEBUNNIFY</button>\n</div>\n";
-
-/***/ },
-/* 27 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"big":"_3M4-2wRo2XA05oal2pZcDe","descpt":"_3XkxfvssrIgpkonLFGF5dD","button":"xfP3T7Yz_kCJyR6kXqwiR"};
-
-/***/ },
-/* 28 */,
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _bunnyText = __webpack_require__(30);
-	
-	var _bunnyText2 = _interopRequireDefault(_bunnyText);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  template: _bunnyText2.default,
-	  bindings: {
-	    bunny: '='
-	  }
-	};
-
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-	module.exports = "<span><a ng-href=\"{{$ctrl.bunny.url}}\">{{$ctrl.bunny.title}}</a></span>";
-
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _bunnyThumbs = __webpack_require__(32);
-	
-	var _bunnyThumbs2 = _interopRequireDefault(_bunnyThumbs);
-	
-	var _bunnyThumbs3 = __webpack_require__(33);
-	
-	var _bunnyThumbs4 = _interopRequireDefault(_bunnyThumbs3);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  template: _bunnyThumbs2.default,
-	  bindings: {
-	    bunny: '='
-	  },
-	  controller: controller
-	};
-	
-	
-	function controller() {
-	  this.styles = _bunnyThumbs4.default;
-	}
-
-/***/ },
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-class=\"$ctrl.styles.thumbs\">\n  <h5>{{$ctrl.bunny.title}}</h5>\n  <span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n\n</div>\n";
+	module.exports = "  <section ng-class=\"$ctrl.styles.imagify\">\n    <div>\n      <h4>ADD MY IMAGES</h4>\n      <div>\n        <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n      </div>\n      <button ng-click=\"$ctrl.addImage()\">IMAGIFY</button>\n    </div>\n  </section>\n";
 
 /***/ },
 /* 33 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"thumbs":"GNdaVozQcueXzisnMZLLi"};
+	module.exports = {"imagify":"_263XriZiUZdRSiODQqMoEI"};
 
 /***/ },
 /* 34 */,
@@ -33354,7 +33354,7 @@
 	  value: true
 	});
 	exports.default = {
-	  template: "\n<h1>HERE GOES BUNNIES!</h1>"
+	  template: "\n<h1>HERE GOES IMAGES!</h1>"
 	};
 
 /***/ },
@@ -33399,7 +33399,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./bunny-service.js": 38
+		"./image-service.js": 38
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33424,23 +33424,23 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = bunnyService;
-	bunnyService.$inject = ['$http', 'apiUrl'];
+	exports.default = imageService;
+	imageService.$inject = ['$http', 'apiUrl'];
 	
-	function bunnyService($http, apiUrl) {
+	function imageService($http, apiUrl) {
 	  return {
 	    get: function get() {
-	      return $http.get(apiUrl + '/bunnies').then(function (res) {
+	      return $http.get(apiUrl + '/images').then(function (res) {
 	        return res.data;
 	      });
 	    },
 	    remove: function remove(id) {
-	      return $http.delete(apiUrl + '/bunnies/' + id).then(function (res) {
+	      return $http.delete(apiUrl + '/images/' + id).then(function (res) {
 	        return res.data;
 	      });
 	    },
-	    add: function add(bunny) {
-	      return $http.post(apiUrl + '/bunnies', bunny).then(function (res) {
+	    add: function add(image) {
+	      return $http.post(apiUrl + '/images', image).then(function (res) {
 	        return res.data;
 	      });
 	    }
@@ -41838,9 +41838,9 @@
 	  });
 	
 	  $stateProvider.state({
-	    name: 'bunnies',
-	    url: '/bunnies',
-	    component: 'bunny-app'
+	    name: 'images',
+	    url: '/images',
+	    component: 'imageApp'
 	
 	  });
 	

@@ -12,17 +12,17 @@ describe('test UI add component', () => {
     $component = $componentController;
   }));
 
-  const bunny = { 
+  const image = { 
     title: 'Miffy', 
     url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
     description: 'Sanrio cease and desist!' 
   };
 
-  describe('calls bunny-app\'s add() fn', () => {
+  describe('calls image-app\'s add() fn', () => {
 
 
-    it('calls bunnyApp.addBunny()', () => {
-      const component = $component('bunnify', {});
+    it('calls imageApp.addImage()', () => {
+      const component = $component('imagify', {});
       
       component.title = 'Miffy'; 
       component.url = 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg'; 
@@ -31,19 +31,19 @@ describe('test UI add component', () => {
       let result = null;
       component.add = (obj) => { result = obj; };
 
-      component.addBunny();
+      component.addImage();
 
-      assert.deepEqual( result, bunny );
+      assert.deepEqual( result, image );
 
-      // test addBunny internal call to reset()
+      // test addImage internal call to reset()
       assert.equal( component.title, '' );
       assert.equal( component.url, '' );
       assert.equal( component.description, '' );
 
     });    
     
-    it('calls bunnyApp.reset()', () => {
-      const component = $component('bunnify', {});
+    it('calls imageApp.reset()', () => {
+      const component = $component('imagify', {});
       
       component.title = 'Miffy'; 
       component.url = 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg'; 

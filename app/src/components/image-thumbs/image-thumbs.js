@@ -1,10 +1,10 @@
-import template from './bunny-thumbs.html';
-import styles from './bunny-thumbs.scss';
+import template from './image-thumbs.html';
+import styles from './image-thumbs.scss';
 
 export default {
   template,
   bindings: {
-    bunny: '='
+    image: '='
   },
   controller
 };

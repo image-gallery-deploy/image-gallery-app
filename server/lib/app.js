@@ -4,7 +4,7 @@ const errorHandler = require( './error-handler' );
 const morgan = require( 'morgan' );
 // const path = require( 'path' );
 
-const bunnies = require( './routes/bunnies' );
+const images = require( './routes/images' );
 
 app.use( morgan('dev') );
 
@@ -26,7 +26,7 @@ app.use( (req, res, next) => {
 });
 app.use(express.static('/public'));
 
-app.use('/api/bunnies', bunnies);
+app.use('/api/images', images);
 
 app.use(errorHandler);
 

@@ -1,4 +1,4 @@
 export default {
   template: `
-<h1>HERE GOES BUNNIES!</h1>`
+<h1>HERE GOES IMAGES!</h1>`
 };

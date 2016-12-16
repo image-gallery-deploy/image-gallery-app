@@ -18,4 +18,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Bunny', schema);
+module.exports = mongoose.model('Image', schema);
