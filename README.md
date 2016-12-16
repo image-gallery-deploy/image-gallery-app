@@ -1,8 +1,8 @@
-#### SAMPLE BUNNIES
+#### SAMPLE IMAGES
 The following can be JSON.stringified and then manually loaded into MongoDB for test-driving purposes, or just entered one by one using the front end UI.
 
 ```javascript
-  sample.bunnies = [
+  sample.images = [
     { 
       title: 'Snuggly-wuggly', 
       url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg', 

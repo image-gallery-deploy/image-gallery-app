@@ -1,5 +1,5 @@
-import template from './imagify.html';
-import styles from './imagify.scss';
+import template from './albumize.html';
+import styles from './albumize.scss';
 
 export default {
   template,
@@ -15,20 +15,15 @@ function controller() {
 
   this.reset = () => {
     this.title = '';
-    this.url = '';
     this.description = '';
-    this.album = '';
   };
 
   this.reset();
 
-  this.addImage = () => {
+  this.addAlbum = () => {
     this.add({
       title: this.title,
-      url: this.url,
-      description: this.description,
-      album: this.album
-      
+      description: this.description
     });
 
     this.reset();

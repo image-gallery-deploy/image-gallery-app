@@ -15,6 +15,15 @@ const schema = new Schema({
   description: {
     type: String,
     default: ''
+  },
+  album: {
+    type: String,
+    default: 'Miscellaneous'
+  },
+  albumId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Album'
   }
 });
 

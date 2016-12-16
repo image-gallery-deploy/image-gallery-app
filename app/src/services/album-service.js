@@ -2,8 +2,8 @@ imageService.$inject = [ '$http', 'apiUrl' ];
 
 export default function imageService( $http, apiUrl ) {
   return {
-    getAll() {
-      return $http.get( `${apiUrl}/images` )
+    getAlbums() {
+      return $http.get( `${apiUrl}/albums` )
       .then( res => res.data );
     },
     get(album) {
