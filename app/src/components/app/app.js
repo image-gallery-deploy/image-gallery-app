@@ -1,4 +1,11 @@
 import template from './app.html';
-import './app.scss';
+import styles from './app.scss';
 
-export default { template };
+export default { 
+  template,
+  controller 
+};
+
+function controller() {
+  this.styles = styles;
+}

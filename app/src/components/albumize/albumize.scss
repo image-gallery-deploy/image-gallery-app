@@ -1,7 +1,7 @@
 @import 'b-radius';
 @import 'hover';
 
-:local(.imagify){
+:local(.albumize){
   position: absolute;
   margin: 3rem auto auto 3rem;
   padding: 0.5rem;
@@ -11,24 +11,24 @@
   &:hover {@include hover;}
 }
 
-:local(.imagify > div) {
+:local(.albumize > div) {
   position: relative;
   height: content-max;
 }
 
-:local(.imagify > div > h4) {
+:local(.albumize > div > h4) {
   margin: .25rem auto;
   float: right;
 }
 
-:local(.imagify > div > div > label) {
+:local(.albumize > div > div > label) {
   float: right;
 }
 
-:local(.imagify > div > div > label > input) {
+:local(.albumize > div > div > label > input) {
   margin: 0.5rem;
 }
 
-:local(.imagify > div > button) {
+:local(.albumize > div > button) {
   float: right;
 }

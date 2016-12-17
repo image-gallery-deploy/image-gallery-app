@@ -4,3 +4,10 @@ button.active {
   @include hover; 
   @include b-radius(12%);
 }
+
+.sidebar {
+  position: fixed;
+  height: 1000px;
+  width: 200px;
+
+}

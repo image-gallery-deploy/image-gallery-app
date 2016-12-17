@@ -4,6 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser').json();
 
 const Image = require('../models/image');
+const Album = require('../models/album');
 
 router
     .get('/', (req, res, next) => {
@@ -22,11 +23,20 @@ router
     })
     .post('/', bodyParser, (req, res, next) => {
 
-      new Image(req.body).save()
-        .then(image => res.send(image))
-        .catch((err) => {
-          next(err);
-        });
+      Album.find({title: req.body.album})
+        .select('_id')
+        .then(id => {
+          req.body.albumId = id[0];
+          console.log('req.body: ', req.body);
+
+          new Image(req.body).save()
+            .then(image => res.send(image))
+            .catch((err) => {
+              next(err);
+            });
+        })
+        .catch(next);
+
     })
     .get('/:id', (req, res, next) => {
       Image.findById(req.params.id)

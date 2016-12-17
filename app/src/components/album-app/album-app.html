@@ -2,9 +2,7 @@
 <section>
   <ul>
     <li ng-repeat="album in app.albums">
-      <image-text
-        image="image">
-      </image-text>
+      <span><a ui-sref="images/${album}">{{album.title}}</a></span>
     </li>
 </section>
 
