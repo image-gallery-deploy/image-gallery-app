@@ -32,14 +32,21 @@ export default function routes($stateProvider, $urlRouterProvider) {
   $stateProvider.state({
     name: 'images',
     url: '/images',
-    component: 'imageApp'
+    component: 'images'
+
+  });
+
+  $stateProvider.state({
+    name: 'images.album',
+    url: '/:album',
+    component: 'images'
 
   });
 
   $stateProvider.state({
     name: 'albums',
     url: '/albums',
-    component: 'albumApp'
+    component: 'albums'
 
   });
 

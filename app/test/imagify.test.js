@@ -18,10 +18,10 @@ describe('test UI add component', () => {
     description: 'Sanrio cease and desist!' 
   };
 
-  describe('calls image-app\'s add() fn', () => {
+  describe('calls "images\'" add() fn', () => {
 
 
-    it('calls imageApp.addImage()', () => {
+    it('calls images.addImage()', () => {
       const component = $component('imagify', {});
       
       component.title = 'Miffy'; 
@@ -42,7 +42,7 @@ describe('test UI add component', () => {
 
     });    
     
-    it('calls imageApp.reset()', () => {
+    it('calls images.reset()', () => {
       const component = $component('imagify', {});
       
       component.title = 'Miffy'; 

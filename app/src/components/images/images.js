@@ -1,4 +1,4 @@
-import template from './image-app.html';
+import template from './images.html';
 
 export default {
   template,
@@ -10,14 +10,17 @@ controller.$inject = [ 'imageService' ];
 
 function controller(images) {
 
-  images.getAll().then(images => {
+  images.getImages().then(images => {
     this.images = images;
   });
 
-  // images.get().then(images => {
-  //   this.images = images;
-  // });
-
+  // this.get = album => {
+  //   images.get(album)
+  //     .then(images => {
+  //       this.images = images;
+  //     });
+  // };
+  
   this.add = image => {
     images.add( image )
     .then(saved => {

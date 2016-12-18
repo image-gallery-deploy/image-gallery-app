@@ -14,20 +14,21 @@ function controller() {
   this.styles = styles;
 
   this.reset = () => {
+    this.album = '';
     this.title = '';
     this.url = '';
     this.description = '';
-    this.album = '';
+    
   };
 
   this.reset();
 
   this.addImage = () => {
     this.add({
+      album: this.album,
       title: this.title,
       url: this.url,
-      description: this.description,
-      album: this.album
+      description: this.description
       
     });
 

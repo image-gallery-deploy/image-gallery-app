@@ -12,7 +12,7 @@ describe('test UI remove component', () => {
     $component = $componentController;
   }));
 
-  describe('calls image-app\'s remove() fn', () => {
+  describe('calls "images\'" remove() fn', () => {
 
     const image = { 
       title: 'Miffy', 
@@ -20,7 +20,7 @@ describe('test UI remove component', () => {
       description: 'Sanrio cease and desist!' 
     };
 
-    it('calls imageApp.remove()', () => {
+    it('calls images.remove()', () => {
       const component = $component('imageBig', {});
 
       component.image = { 

@@ -8,7 +8,7 @@ body {
   background-color: powderblue; }
 
 article {
-  margin: 0 auto;
+  margin: 0 0 auto auto;
   padding: 3% 3% 20% 3%;
   min-height: 1000px;
   max-width: 65%;
@@ -33,6 +33,36 @@ a {
 section {
   margin: 0 auto;
   width: max-content; }
+._2JrohgJKAbWbELDYyENSZR {
+  position: absolute;
+  margin: 3rem auto auto 3rem;
+  padding: 0.5rem;
+  border: 1px solid #f2f2f2;
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  -ms-border-radius: 2%;
+  -o-border-radius: 2%;
+  border-radius: 2%; }
+  ._2JrohgJKAbWbELDYyENSZR:hover {
+    border: solid darkturquoise 1px;
+    box-shadow: 0 0 15px darkturquoise; }
+
+._2JrohgJKAbWbELDYyENSZR > div {
+  position: relative;
+  height: content-max; }
+
+._2JrohgJKAbWbELDYyENSZR > div > h4 {
+  margin: .25rem auto;
+  float: right; }
+
+._2JrohgJKAbWbELDYyENSZR > div > div > label {
+  float: right; }
+
+._2JrohgJKAbWbELDYyENSZR > div > div > label > input {
+  margin: 0.5rem; }
+
+._2JrohgJKAbWbELDYyENSZR > div > button {
+  float: right; }
 button.active {
   border: solid darkturquoise 1px;
   box-shadow: 0 0 15px darkturquoise;
@@ -41,6 +71,11 @@ button.active {
   -ms-border-radius: 12%;
   -o-border-radius: 12%;
   border-radius: 12%; }
+
+.sidebar {
+  position: fixed;
+  height: 1000px;
+  width: 200px; }
 .hD3TwFKrWbGwkRMjRfU5u {
   border: solid black 1px;
   max-width: 25%;
@@ -55,6 +90,10 @@ button.active {
 
 ._3Wl9r3BXN6GyD2rXZrBlnM {
   font-size: 0.85rem;
+  font-weight: lighter; }
+
+.UMLYVgKUJUxMRtJ1MPisb {
+  font-size: 0.65rem;
   font-weight: lighter; }
 
 ._1VN-smvGlmn8_CK-jOupZN {

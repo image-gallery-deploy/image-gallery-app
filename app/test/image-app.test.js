@@ -49,7 +49,7 @@ describe('test main component', () => {
 
     
     it('loads images', done => {
-      const component = $component('imageApp', { imageService });
+      const component = $component('images', { imageService });
 
       setTimeout(() => {
         assert.equal(component.images, images);
@@ -59,7 +59,7 @@ describe('test main component', () => {
     });
 
     it('adds images', done => {
-      const component = $component('imageApp', { imageService });
+      const component = $component('images', { imageService });
 
       component.add( image );
 
@@ -72,7 +72,7 @@ describe('test main component', () => {
     });
 
     it('removes images', done => {
-      const component = $component('imageApp', { imageService });
+      const component = $component('images', { imageService });
       
       component.remove( image );
 

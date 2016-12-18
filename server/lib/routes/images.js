@@ -12,7 +12,7 @@ router
       const query = {};
 
       // support sending a nav bar query using `?`
-      if(req.query.name) query.title = req.query.title;
+      if(req.query.album) query.album = req.query.album;
       if(req.query._id) query._id = req.query._id;
 
       Image.find(query)
@@ -37,6 +37,12 @@ router
         })
         .catch(next);
 
+    })
+    .get('/:album', (req, res, next) => {
+      console.log('images.js req imgs by alb: ', req.params);
+      Image.find(req.params)
+        .then(images => res.send(images))
+        .catch(next);
     })
     .get('/:id', (req, res, next) => {
       Image.findById(req.params.id)

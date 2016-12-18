@@ -14,7 +14,7 @@ const schema = new Schema({
   },
   images: [{
     type: Schema.Types.ObjectId,
-    required: true,
+    // required: true,
     ref: 'Image'
   }]
 });
