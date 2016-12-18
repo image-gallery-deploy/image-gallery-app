@@ -1,36 +1,15 @@
 
 <section  ng-init="view = 'text'">
-  <button ng-class="button" ng-click="view = 'text'">Links</button>
-  <button ng-class="button" ng-click="view = 'thumbs'">Thumbs</button>
-  <button ng-class="button" ng-click="view = 'big'">Big</button>
+  <button ng-class="button" ui-sref="image.text" ui-sref-active="active">Links</button>
+  <button ng-class="button" ui-sref="image.thumbs" ui-sref-active="active">Thumbs</button>
+  <button ng-class="button" ui-sref="image.big" ui-sref-active="active">Big</button>
 
 </section>
 
 <section>
-  <ul ng-show="view === 'text'">
+  <ul>
     <li ng-repeat="image in app.images">
-      <image-text
-        image="image">
-      </image-text>
-    </li>
-    
-  </ul>
-
-  <ul ng-show="view === 'thumbs'">
-    <li ng-repeat="image in app.images">
-      <image-thumbs
-        image="image">
-      </image-thumbs>
-    </li>
-    
-  </ul>
-
-  <ul ng-show="view === 'big'">
-    <li ng-repeat="image in app.images">
-      <image-big
-        image="image"
-        remove="app.remove">
-      </image-big>
+      <ui-view></ui-view>
     </li>
     
   </ul>
