@@ -2,6 +2,7 @@ import template from './images.html';
 
 export default {
   template,
+  bindings: {album: '<'},
   controller,
   controllerAs: 'app'
 };
@@ -9,17 +10,19 @@ export default {
 controller.$inject = [ 'imageService' ];
 
 function controller(images) {
-
+  console.log('now in images.js');
   images.getImages().then(images => {
+    console.log('images, getting images');
     this.images = images;
   });
 
-  this.get = album => {
-    images.get(album)
-      .then(images => {
-        this.images = images;
-      });
-  };
+  // this.get = album => {
+  //   console.log('images, getting album');
+  //   images.get(album)
+  //     .then(images => {
+  //       this.images = images;
+  //     });
+  // };
   
   this.add = image => {
     images.add( image )

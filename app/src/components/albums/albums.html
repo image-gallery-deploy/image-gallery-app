@@ -2,7 +2,7 @@
 <section>
   <ul>
     <li ng-repeat="album in app.albums">
-      <span><a ui-sref="images">{{album.title}}</a></span>
+      <span><a ui-sref="images.album({album: album.title})">{{album.title}}</a></span>
     </li>
 </section>
 

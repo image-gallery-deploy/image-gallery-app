@@ -2,13 +2,17 @@ imageService.$inject = [ '$http', 'apiUrl' ];
 
 export default function imageService( $http, apiUrl ) {
   return {
-    getImages() {
-      return $http.get( `${apiUrl}/images` )
-      .then( res => res.data );
-    },
     get(album) {
-      console.log('image-service GET request for album: ', album);
+      console.log('image-service GET request for album:', apiUrl, album);
       return $http.get( `${apiUrl}/images/${album}` )
+      .then( res => {
+        console.log('res.data: ', res.data);
+        return res.data;
+      } );
+    },
+    getImages() {
+      console.log('image-service getImages request');
+      return $http.get( `${apiUrl}/images` )
       .then( res => res.data );
     },
     remove(id) {
