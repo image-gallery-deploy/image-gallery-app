@@ -14,12 +14,12 @@ function controller(images) {
     this.images = images;
   });
 
-  // this.get = album => {
-  //   images.get(album)
-  //     .then(images => {
-  //       this.images = images;
-  //     });
-  // };
+  this.get = album => {
+    images.get(album)
+      .then(images => {
+        this.images = images;
+      });
+  };
   
   this.add = image => {
     images.add( image )

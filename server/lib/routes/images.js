@@ -41,9 +41,7 @@ router
     .get('/:album', (req, res, next) => {
       console.log('images.js req imgs by alb: ', req.params);
       Image.find(req.params)
-        .then((images) => {
-          images.album = images;
-          console.log('images.album: ', images.album);
+        .then(images => {
           res.send(images);
         })
         .catch(next);
