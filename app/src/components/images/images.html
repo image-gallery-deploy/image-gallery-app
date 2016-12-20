@@ -1,14 +1,13 @@
-
 <section  ng-init="view = 'text'">
-  <button ng-class="button" ui-sref="image.text" ui-sref-active="active">Links</button>
-  <button ng-class="button" ui-sref="image.thumbs" ui-sref-active="active">Thumbs</button>
-  <button ng-class="button" ui-sref="image.big" ui-sref-active="active">Big</button>
+  <button ng-class="button" ng-click="view = 'text'">Links</button>
+  <button ng-class="button" ng-click="view = 'thumbs'">Thumbs</button>
+  <button ng-class="button" ng-click="view = 'big'">Big</button>
 
 </section>
 
 <section>
   <ul ng-show="view === 'text'">
-    <li ng-repeat="image in app.images">
+    <li ng-repeat="image in $ctrl.images">
       <image-text
         image="image">
       </image-text>
@@ -17,7 +16,7 @@
   </ul>
 
   <ul ng-show="view === 'thumbs'">
-    <li ng-repeat="image in app.images">
+    <li ng-repeat="image in $ctrl.images">
       <image-thumbs
         image="image">
       </image-thumbs>
@@ -26,10 +25,10 @@
   </ul>
 
   <ul ng-show="view === 'big'">
-    <li ng-repeat="image in app.images">
+    <li ng-repeat="image in $ctrl.images">
       <image-big
         image="image"
-        remove="app.remove">
+        remove="$ctrl.remove">
       </image-big>
     </li>
     
@@ -38,6 +37,6 @@
 
 <imagify
   image="image"
-  add="app.add">
+  add="$ctrl.add">
 </imagify>
 

@@ -1,28 +1,28 @@
 import template from './images.html';
+import styles from './images.scss';
+
 
 export default {
   template,
   bindings: {album: '<'},
-  controller,
-  controllerAs: 'app'
+  controller
 };
 
 controller.$inject = [ 'imageService' ];
 
 function controller(images) {
-  console.log('now in images.js');
-  images.getImages().then(images => {
-    console.log('images, getting images');
-    this.images = images;
-  });
+  this.styles = styles;
 
-  // this.get = album => {
-  //   console.log('images, getting album');
-  //   images.get(album)
-  //     .then(images => {
-  //       this.images = images;
-  //     });
-  // };
+  console.log('now in images.js');
+ 
+  this.$onInit = () => {
+    images.get(this.album)
+      .then(images => {
+        console.log('images.get this.album: ', this.album);
+        this.images = images;
+        console.log('images: ', this.images);
+      });
+  };
   
   this.add = image => {
     images.add( image )

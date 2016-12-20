@@ -17,9 +17,8 @@ router
 
       Image.find(query)
         .then((images) => res.send(images))
-        .catch((err) => {
-          next(err);
-        });
+        .catch(err => next(err));
+        
     })
     .post('/', bodyParser, (req, res, next) => {
 
@@ -45,21 +44,25 @@ router
           res.send(images);
         })
         .catch(next);
+
     })
     .get('/:id', (req, res, next) => {
       Image.findById(req.params.id)
         .then(image => res.send(image))
         .catch(next);
+
     })
     .put('/:id', bodyParser, (req, res, next) => {
       Image.findByIdAndUpdate(req.params.id, req.body, {new: true})
         .then(saved => res.send(saved))
         .catch(next);
+
     })
     .delete('/:id', (req, res, next) => {
       Image.findByIdAndRemove(req.params.id)
         .then(deleted => res.send(deleted))
         .catch(next);
+
     });
 
 module.exports = router;
