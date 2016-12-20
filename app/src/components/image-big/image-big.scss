@@ -3,7 +3,7 @@
 
 :local(.big) {
   border: solid black 1px;
-  max-width: 25%;
+  max-width: 30%;
   @include b-radius(1%);
   &:hover { @include hover };
 }

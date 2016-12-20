@@ -1,9 +1,11 @@
 
-<section>
+<section ng-class="app.styles.albums">
   <ul>
+    <h4>ALBUMS</h4>
     <li ng-repeat="album in app.albums">
       <span><a ui-sref="image-album({album: album.title})">{{album.title}}</a></span>
     </li>
+  </ul>
 </section>
 
 <albumize

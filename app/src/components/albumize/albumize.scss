@@ -5,10 +5,12 @@
   position: absolute;
   margin: 3rem auto auto 3rem;
   padding: 0.5rem;
+  background-color: rgba(0, 0, 139, 0.5);
+  box-shadow: 0 0 15px darkturquoise;
   border: 1px solid #f2f2f2;
   @include b-radius(2%);
   
-  &:hover {@include hover;}
+  &:hover { box-shadow: 0 0 15px #f2f2f2; }
 }
 
 :local(.albumize > div) {

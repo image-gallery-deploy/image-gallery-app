@@ -1,4 +1,5 @@
 import template from './albums.html';
+import styles from './albums.scss';
 
 export default {
   template,
@@ -9,6 +10,7 @@ export default {
 controller.$inject = [ 'albumService' ];
 
 function controller(albums) {
+  this.styles = styles;
 
   albums.getAlbums().then(albums => {
     this.albums = albums;
