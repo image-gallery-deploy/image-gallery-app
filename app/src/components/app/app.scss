@@ -8,7 +8,8 @@ button.active {
 .sidebar {
   position: fixed;
   height: 1000px;
-  width: 25%;
+  width: 21%;
+  overflow: scroll;
   background-color: rgba(0, 206, 209, 0.15);
   box-shadow: 1px 1px 15px #f2f2f2;
 

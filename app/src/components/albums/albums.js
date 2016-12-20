@@ -4,15 +4,15 @@ import styles from './albums.scss';
 export default {
   template,
   controller,
-  controllerAs: 'app'
 };
 
 controller.$inject = [ 'albumService' ];
 
 function controller(albums) {
   this.styles = styles;
-
+  console.log('in albums.js');
   albums.getAlbums().then(albums => {
+    console.log('getting albums');
     this.albums = albums;
   });
 
@@ -24,6 +24,7 @@ function controller(albums) {
   };
 
   this.remove = album => {
+    console.log('removing album', album);
     albums.remove( album._id )
     .then(() => {
       const index = this.albums.indexOf( album );

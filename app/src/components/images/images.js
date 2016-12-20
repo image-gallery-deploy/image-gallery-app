@@ -18,15 +18,16 @@ function controller(images) {
   this.$onInit = () => {
     images.get(this.album)
       .then(images => {
-        console.log('images.get this.album: ', this.album);
         this.images = images;
-        console.log('images: ', this.images);
       });
   };
   
   this.add = image => {
+    console.log('this.images: ', this.images);
+    console.log('adding image: ', image);
     images.add( image )
     .then(saved => {
+      console.log('saved: ', saved);
       this.images.push( saved );
     });
   };

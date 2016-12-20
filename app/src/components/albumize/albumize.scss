@@ -3,8 +3,10 @@
 
 :local(.albumize){
   position: absolute;
-  margin: 3rem auto auto 3rem;
+  max-width: none;
+  margin: 0.25rem auto auto 1rem;
   padding: 0.5rem;
+  overflow: hidden;
   background-color: rgba(0, 0, 139, 0.5);
   box-shadow: 0 0 15px darkturquoise;
   border: 1px solid #f2f2f2;

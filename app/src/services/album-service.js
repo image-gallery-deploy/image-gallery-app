@@ -1,6 +1,6 @@
-imageService.$inject = [ '$http', 'apiUrl' ];
+albumService.$inject = [ '$http', 'apiUrl' ];
 
-export default function imageService( $http, apiUrl ) {
+export default function albumService( $http, apiUrl ) {
   return {
     getAlbums() {
       return $http.get( `${apiUrl}/albums` )
