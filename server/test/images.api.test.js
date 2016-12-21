@@ -2,6 +2,7 @@ const chai = require( 'chai' );
 const chaiHttp = require( 'chai-http' );
 const assert = chai.assert;
 chai.use( chaiHttp );
+const Album = require('../lib/models/album.js');
 
 const connection = require( '../lib/setup-mongoose' );
 
@@ -17,15 +18,28 @@ describe('test images resource route', () => {
 
   const request = chai.request( app );
 
+  const album = new Album ({
+    title: 'Bunnies',
+    description: 'Cute!'
+  });
+  
+  before(done => {
+    album.save()
+    .then(() => done());
+
+  });
+
   const image = { 
+    album: 'Bunnies',
     title: 'Miffy', 
     url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
-    description: 'Sanrio cease and desist!' 
+    description: 'Sanrio cease and desist!', 
+    albumId: {_id: album._id}
   };
 
   var imageResult = null;
 
-  it('completes GET request on empty db', done => {
+  it('completes GET request on empty images db', done => {
     request
       .get( '/api/images' )
       .then(res => {
@@ -36,7 +50,7 @@ describe('test images resource route', () => {
 
   });
 
-  it('completes POST request', done => {
+  it('completes image POST request', done => {
     request 
       .post( '/api/images' )
       .send( image )
@@ -44,6 +58,8 @@ describe('test images resource route', () => {
         imageResult = res.body;
         image.__v = 0;
         image._id = imageResult._id;
+        image.albumId = imageResult.albumId;
+        assert.deepEqual( image, imageResult );
         done();
       })
       .catch( done );
@@ -51,8 +67,9 @@ describe('test images resource route', () => {
 
   it('completes GET request for all in collection', done => {
     request
-      .get(  '/api/images')
+      .get( '/api/images' )
       .then(res => {
+        console.log('res.body[0].albumId: ', res.body[0].albumId);
         assert.deepEqual( res.body, [image] );
         done();
       })

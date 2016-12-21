@@ -4,12 +4,10 @@ export default function imageService( $http, apiUrl ) {
   return {
     get(album) {
       if(!album) return this.getImages();
-      // console.log('image-service GET request for album:', apiUrl, album);
       return $http.get( `${apiUrl}/images/${album}` )
       .then( res => res.data);
     },
     getImages() {
-      console.log('image-service getImages request');
       return $http.get( `${apiUrl}/images` )
       .then( res => res.data );
     },

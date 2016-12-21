@@ -33161,11 +33161,11 @@
 	  var _this = this;
 	
 	  this.styles = _albums4.default;
-	  console.log('in albums.js');
-	  albums.getAlbums().then(function (albums) {
-	    console.log('getting albums');
-	    _this.albums = albums;
-	  });
+	  this.$onInit = function () {
+	    albums.getAlbums().then(function (albums) {
+	      _this.albums = albums;
+	    });
+	  };
 	
 	  this.add = function (album) {
 	    albums.add(album).then(function (saved) {
@@ -33174,7 +33174,6 @@
 	  };
 	
 	  this.remove = function (album) {
-	    console.log('removing album', album);
 	    albums.remove(album._id).then(function () {
 	      var index = _this.albums.indexOf(album);
 	      if (index > -1) _this.albums.splice(index, 1);
@@ -33403,8 +33402,6 @@
 	
 	  this.styles = _images4.default;
 	
-	  console.log('now in images.js');
-	
 	  this.$onInit = function () {
 	    images.get(_this.album).then(function (images) {
 	      _this.images = images;
@@ -33412,10 +33409,7 @@
 	  };
 	
 	  this.add = function (image) {
-	    console.log('this.images: ', _this.images);
-	    console.log('adding image: ', image);
 	    images.add(image).then(function (saved) {
-	      console.log('saved: ', saved);
 	      _this.images.push(saved);
 	    });
 	  };
@@ -33637,13 +33631,11 @@
 	  return {
 	    get: function get(album) {
 	      if (!album) return this.getImages();
-	      // console.log('image-service GET request for album:', apiUrl, album);
 	      return $http.get(apiUrl + '/images/' + album).then(function (res) {
 	        return res.data;
 	      });
 	    },
 	    getImages: function getImages() {
-	      console.log('image-service getImages request');
 	      return $http.get(apiUrl + '/images').then(function (res) {
 	        return res.data;
 	      });

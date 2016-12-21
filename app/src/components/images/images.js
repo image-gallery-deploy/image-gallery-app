@@ -13,8 +13,6 @@ controller.$inject = [ 'imageService' ];
 function controller(images) {
   this.styles = styles;
 
-  console.log('now in images.js');
- 
   this.$onInit = () => {
     images.get(this.album)
       .then(images => {
@@ -23,11 +21,8 @@ function controller(images) {
   };
   
   this.add = image => {
-    console.log('this.images: ', this.images);
-    console.log('adding image: ', image);
     images.add( image )
     .then(saved => {
-      console.log('saved: ', saved);
       this.images.push( saved );
     });
   };

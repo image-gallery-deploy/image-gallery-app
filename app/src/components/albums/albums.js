@@ -10,11 +10,11 @@ controller.$inject = [ 'albumService' ];
 
 function controller(albums) {
   this.styles = styles;
-  console.log('in albums.js');
-  albums.getAlbums().then(albums => {
-    console.log('getting albums');
-    this.albums = albums;
-  });
+  this.$onInit = () => {
+    albums.getAlbums().then(albums => {
+      this.albums = albums;
+    });
+  };
 
   this.add = album => {
     albums.add( album )
@@ -24,7 +24,6 @@ function controller(albums) {
   };
 
   this.remove = album => {
-    console.log('removing album', album);
     albums.remove( album._id )
     .then(() => {
       const index = this.albums.indexOf( album );

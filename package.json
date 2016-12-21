@@ -4,8 +4,7 @@
   "description": "image gallery",
   "main": "index.js",
   "scripts": {
-    "test": "return 0",
-    "start": "return 0"
+    "test": "cd app && npm i && npm test && cd ../server && npm i && npm test"
   },
   "repository": {
     "type": "git",
