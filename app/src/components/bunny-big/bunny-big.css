@@ -6,3 +6,7 @@
 :local(.big:hover) {
   border: solid darkturquoise 1px;
 }
+
+:local(.button) {
+  margin: auto auto auto 2em;
+}

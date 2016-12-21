@@ -10,7 +10,12 @@
   },
     "env": {
         "node": true,
-        "mocha": true
+        "mocha": true,
+        "es6": true
+    },
+    "globals": {
+        "angular": false,
+        "chai": false
     },
     "extends": "eslint:recommended",
     "rules": {

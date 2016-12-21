@@ -1,13 +1,8 @@
-import template from './bunny-app.html';
+#### SAMPLE BUNNIES
+The following can be JSON.stringified and then manually loaded into MongoDB for test-driving purposes, or just entered one by one using the front end UI.
 
-export default {
-  template,
-  controller,
-  controllerAs: 'app'
-};
-
-function controller() {
-  this.bunnies = [
+```javascript
+  sample.bunnies = [
     { 
       title: 'Snuggly-wuggly', 
       url: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg', 
@@ -33,28 +28,11 @@ function controller() {
       url: 'https://pbs.twimg.com/profile_images/473206451901448195/nVx4QaHn.jpeg', 
       description: 'Up!' 
     },
+    { 
+      title: 'Miffy', 
+      url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
+      description: 'Sanrio cease and desist!' 
+    }
     
   ];
-
-  this.toggleText = () => {
-    console.log('toggleText');
-    this.showText = true;
-    this.showThumbs = false;
-    this.showBig = false;
-  };
-
-  this.toggleThumbs = () => {
-    console.log('toggleThumbs');
-    this.showText = false;
-    this.showThumbs = true;
-    this.showBig = false;
-  };
-
-  this.toggleBig = () => {
-    console.log('toggleBig');
-    this.showText = false;
-    this.showThumbs = false;
-    this.showBig = true;
-  };
-
-}
+```
