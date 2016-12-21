@@ -2,7 +2,7 @@ const webpackConfig = require('./webpack.config');
 webpackConfig.entry = {};
 
 module.exports = function(config) {
-  config.set({
+  const options = {
 
     // base path to use in resolving, e.g., file or exclusion patterns
     basePath: '',
@@ -13,7 +13,7 @@ module.exports = function(config) {
 
     // list of files and patterns to load
     files: [
-      './src/app.js',
+      './src/main.js',
       './node_modules/angular-mocks/angular-mocks.js',
       './test/**/*.js'
     ],
@@ -26,13 +26,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to browser 
     // see https://npmjs.org/browse/keyword/karma-preprocessor for available preprocessors
     preprocessors: {
-      './src/app.js': [ 'webpack' ],
+      './src/main.js': [ 'webpack' ],
       './test/**/*.js/': [ 'babel' ]
     },
 
     // browsers to start
     // see https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ 'Chrome'/*, 'Safari'*/ ],
+    browsers: [ 'Chrome', 'Safari' ],
 
     // test result reporter to use
     // possible reporters: 'dots', 'progress'
@@ -60,6 +60,21 @@ module.exports = function(config) {
     // max no. of browsers that should be started at one time
     concurrency: Infinity
     
-  });
+  };
+
+  if(process.env.TRAVIS) {
+    options.customLaunchers = {
+      Chrome_travis_ci: {
+        base: 'Chrome', 
+        flags: [ '--no-sandbox' ]
+      }
+    };
+
+    options.browsers = [ 'Chrome_travis_ci' ];
+    options.singleRun = true;
+
+  }
+
+  config.set( options );
 
 };
