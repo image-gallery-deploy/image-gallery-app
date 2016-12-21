@@ -1,5 +1,5 @@
 import template from './bunny-big.html';
-import styles from './bunny-big.css';
+import styles from './bunny-big.scss';
 
 export default {
   template,

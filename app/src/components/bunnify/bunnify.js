@@ -1,5 +1,5 @@
 import template from './bunnify.html';
-import styles from './bunnify.css';
+import styles from './bunnify.scss';
 
 export default {
   template,

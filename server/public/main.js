@@ -32468,14 +32468,353 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(4);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 4 */,
-/* 5 */,
-/* 6 */,
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html, body {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  font-family: Calibri, Helvetica, sans-serif;\n  color: #f2f2f2;\n  background-color: powderblue; }\n\narticle {\n  margin: 0 auto;\n  padding: 3% 3% 20% 3%;\n  min-height: 1000px;\n  max-width: 65%;\n  overflow: hidden;\n  background-color: rgba(0, 0, 139, 0.5);\n  box-shadow: 0 0 15px #000033; }\n\nh1 {\n  text-align: center; }\n\nh5 {\n  margin-top: 1.5rem;\n  margin-bottom: 0.35rem;\n  font-weight: bold; }\n\nul {\n  list-style: none; }\n\na {\n  color: darkturquoise; }\n\nsection {\n  margin: 0 auto;\n  width: max-content; }\n", "", {"version":3,"sources":["/./src/scss/src/scss/main.scss"],"names":[],"mappings":"AAAA;EACE,UAAS;EACT,WACF,EAAE;;AAEF;EACE,4CAA2C;EAC3C,eAAc;EACd,6BAA4B,EAC7B;;AAED;EACE,eAAc;EACd,sBAAqB;EACrB,mBAAkB;EAClB,eAAc;EACd,iBAAgB;EAChB,uCAAsC;EACtC,6BAAkC,EACnC;;AAED;EACE,mBAAkB,EACnB;;AAED;EAEE,mBAAkB;EAClB,uBAAsB;EACtB,kBAAiB,EAClB;;AAED;EACE,iBAAgB,EACjB;;AAED;EACE,qBAAoB,EACrB;;AAED;EACE,eAAc;EACd,mBAAkB,EAEnB","file":"main.scss","sourcesContent":["html, body {\n  margin: 0;\n  padding: 0\n}\n\nbody {\n  font-family: Calibri, Helvetica, sans-serif;\n  color: #f2f2f2;\n  background-color: powderblue;\n}\n\narticle {\n  margin: 0 auto;\n  padding: 3% 3% 20% 3%;\n  min-height: 1000px;\n  max-width: 65%;\n  overflow: hidden;\n  background-color: rgba(0, 0, 139, 0.5);\n  box-shadow: 0 0 15px rgb(0, 0, 51);\n}\n\nh1 {\n  text-align: center;\n}\n\nh5 {\n  // text-align: center;\n  margin-top: 1.5rem;\n  margin-bottom: 0.35rem;\n  font-weight: bold;\n}\n\nul {\n  list-style: none;\n}\n\na {\n  color: darkturquoise;\n}\n\nsection {\n  margin: 0 auto;\n  width: max-content;\n\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33072,17 +33411,51 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <h4>ADD MY BUNNIES</h4>\n    <div>\n      <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n    </div>\n\n    <div>\n      <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n    </div>\n    <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n  </section>\n";
+	module.exports = "  <section ng-class=\"$ctrl.styles.bunnify\">\n    <div>\n      <h4>ADD MY BUNNIES</h4>\n      <div>\n        <label>TITLE: <input ng-model=\"$ctrl.title\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>URL: <input ng-model=\"$ctrl.url\" type=\"text\"></label>\n      </div>\n      <div>\n        <label>DESCRIPTION: <input ng-model=\"$ctrl.description\" type=\"text\"></label>\n      </div>\n      <button ng-click=\"$ctrl.addBunny()\">BUNNIFY</button>\n    </div>\n  </section>\n";
 
 /***/ },
 /* 14 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
-	module.exports = {"bunnify":"_21aIS_BYawsfYU3pUZU1s2"};
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(15);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunnify.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunnify.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 15 */,
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._3cauvEe8KjlFJZBxByqJIa {\n  position: absolute;\n  margin: 3rem auto auto 3rem;\n  padding: 0.5rem;\n  border: 1px solid lightgray;\n  -webkit-border-radius: 2%;\n  -moz-border-radius: 2%;\n  -ms-border-radius: 2%;\n  -o-border-radius: 2%;\n  border-radius: 2%; }\n  ._3cauvEe8KjlFJZBxByqJIa:hover {\n    border: solid darkturquoise 1px;\n    box-shadow: 0 0 15px darkturquoise; }\n\n._3cauvEe8KjlFJZBxByqJIa > div {\n  position: relative;\n  height: content-max; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > h4 {\n  margin: .25rem auto;\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > div > label {\n  float: right; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > div > label > input {\n  margin: 0.5rem; }\n\n._3cauvEe8KjlFJZBxByqJIa > div > button {\n  float: right; }\n", "", {"version":3,"sources":["/./src/components/bunnify/src/components/bunnify/bunnify.scss","/./src/components/bunnify/src/scss/partials/_b-radius.scss","/./src/components/bunnify/src/scss/partials/_hover.scss"],"names":[],"mappings":"AAGA;EACE,mBAAkB;EAClB,4BAA2B;EAC3B,gBAAe;EACf,4BAA2B;ECN3B,0BDOoB;ECNpB,uBDMoB;ECLpB,sBDKoB;ECJpB,qBDIoB;ECHpB,kBDGoB,EAGrB;EARD;IEFE,gCAA+B;IAC/B,mCAAkC,EFQR;;AAG5B;EACE,mBAAkB;EAClB,oBAAmB,EACpB;;AAED;EACE,oBAAmB;EACnB,aAAY,EACb;;AAED;EACE,aAAY,EACb;;AAED;EACE,eAAc,EACf;;AAED;EACE,aAAY,EACb","file":"bunnify.scss","sourcesContent":["@import 'b-radius';\n@import 'hover';\n\n:local(.bunnify){\n  position: absolute;\n  margin: 3rem auto auto 3rem;\n  padding: 0.5rem;\n  border: 1px solid lightgray;\n  @include b-radius(2%);\n  \n  &:hover {@include hover;}\n}\n\n:local(.bunnify > div) {\n  position: relative;\n  height: content-max;\n}\n\n:local(.bunnify > div > h4) {\n  margin: .25rem auto;\n  float: right;\n}\n\n:local(.bunnify > div > div > label) {\n  float: right;\n}\n\n:local(.bunnify > div > div > label > input) {\n  margin: 0.5rem;\n}\n\n:local(.bunnify > div > button) {\n  float: right;\n}\n","@mixin b-radius($pct) {\n  -webkit-border-radius: $pct;\n  -moz-border-radius: $pct;\n  -ms-border-radius: $pct;\n  -o-border-radius: $pct;\n  border-radius: $pct;\n}","@mixin hover {\n  border: solid darkturquoise 1px;\n  box-shadow: 0 0 15px darkturquoise;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+	exports.locals = {
+		"bunnify": "_3cauvEe8KjlFJZBxByqJIa"
+	};
+
+/***/ },
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33223,21 +33596,61 @@
 /* 19 */
 /***/ function(module, exports) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD:build/main.js
 	module.exports = "<article>\n  <h1>Welcome to the Kingdom of Kuddle</h1>\n  <section>\n    <button ng-click=\"app.toggleText()\">BunnyLinks</button>\n    <button ng-click=\"app.toggleThumbs()\">BunnyThumbs</button>\n    <button ng-click=\"app.toggleBig()\">BunnyBig</button>\n  </section>\n\n  <section>\n  <ul ng-show=\"app.showText\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-text\n      bunny=\"bunny\">\n      </bunny-text>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showThumbs\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-thumbs\n      bunny=\"bunny\">\n      </bunny-thumbs>\n    </li>\n  </ul>\n\n  <ul ng-show=\"app.showBig\">\n    <li ng-repeat=\"bunny in app.bunnies\">\n      <bunny-big\n      bunny=\"bunny\">\n      </bunny-big>\n    </li>\n  </ul>\n  </section>\n</article>\n";
 =======
 	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<div>\n  <span>{{$ctrl.bunny.description}}</span>\n  <button ng-class=\"$ctrl.styles.button\" ng-click=\"$ctrl.delete()\">DEBUNNIFY</button>\n</div>\n";
 >>>>>>> txtincLAB2:server/public/main.js
+=======
+	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.big\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n<div>\n  <span ng-class=\"$ctrl.styles.descpt\">{{$ctrl.bunny.description}}</span>\n  <button ng-class=\"$ctrl.styles.button\" ng-click=\"$ctrl.delete()\">DEBUNNIFY</button>\n</div>\n";
+>>>>>>> txtincLAB3
 
 /***/ },
 /* 20 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
-	module.exports = {"big":"_1-SFMhmWvF0zX_1JXsyHXi","button":"KmpRfYJHUBfKIERIy5QoP"};
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(21);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunny-big.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunny-big.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 21 */,
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._3M4-2wRo2XA05oal2pZcDe {\n  border: solid black 1px;\n  max-width: 25%;\n  -webkit-border-radius: 1%;\n  -moz-border-radius: 1%;\n  -ms-border-radius: 1%;\n  -o-border-radius: 1%;\n  border-radius: 1%; }\n  ._3M4-2wRo2XA05oal2pZcDe:hover {\n    border: solid darkturquoise 1px;\n    box-shadow: 0 0 15px darkturquoise; }\n\n._3XkxfvssrIgpkonLFGF5dD {\n  font-size: 0.85rem;\n  font-weight: lighter; }\n\n.xfP3T7Yz_kCJyR6kXqwiR {\n  margin: auto auto auto 2em; }\n", "", {"version":3,"sources":["/./src/components/bunny-big/src/components/bunny-big/bunny-big.scss","/./src/components/bunny-big/src/scss/partials/_b-radius.scss","/./src/components/bunny-big/src/scss/partials/_hover.scss"],"names":[],"mappings":"AAGA;EACE,wBAAuB;EACvB,eAAc;ECJd,0BDKoB;ECJpB,uBDIoB;ECHpB,sBDGoB;ECFpB,qBDEoB;ECDpB,kBDCoB,EAErB;EALD;IEFE,gCAA+B;IAC/B,mCAAkC,EFKP;;AAG7B;EACE,mBAAkB;EAClB,qBAAoB,EACrB;;AAED;EACE,2BAA0B,EAC3B","file":"bunny-big.scss","sourcesContent":["@import 'b-radius';\n@import 'hover';\n\n:local(.big) {\n  border: solid black 1px;\n  max-width: 25%;\n  @include b-radius(1%);\n  &:hover { @include hover };\n}\n\n:local(.descpt) { \n  font-size: 0.85rem;\n  font-weight: lighter; \n}\n\n:local(.button) {\n  margin: auto auto auto 2em;\n}","@mixin b-radius($pct) {\n  -webkit-border-radius: $pct;\n  -moz-border-radius: $pct;\n  -ms-border-radius: $pct;\n  -o-border-radius: $pct;\n  border-radius: $pct;\n}","@mixin hover {\n  border: solid darkturquoise 1px;\n  box-shadow: 0 0 15px darkturquoise;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+	exports.locals = {
+		"big": "_3M4-2wRo2XA05oal2pZcDe",
+		"descpt": "_3XkxfvssrIgpkonLFGF5dD",
+		"button": "xfP3T7Yz_kCJyR6kXqwiR"
+	};
+
+/***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33385,17 +33798,51 @@
 /* 25 */
 /***/ function(module, exports) {
 
-	module.exports = "<h5>{{$ctrl.bunny.title}}</h5>\n<span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-class=\"$ctrl.styles.thumbs\" ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n";
+	module.exports = "<div ng-class=\"$ctrl.styles.thumbs\">\n  <h5>{{$ctrl.bunny.title}}</h5>\n  <span><a ng-href=\"{{$ctrl.bunny.url}}\"><img ng-src=\"{{$ctrl.bunny.url}}\" alt=\"{{$ctrl.bunny.title}}\"></a></span>\n\n</div>\n";
 
 /***/ },
 /* 26 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
-	module.exports = {"thumbs":"_1nXR0zgSVJ36dPG9u7BRq2"};
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(27);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunny-thumbs.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./bunny-thumbs.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 27 */,
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".GNdaVozQcueXzisnMZLLi > span > a > img {\n  margin: auto;\n  border: solid black 1px;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  -ms-border-radius: 50%;\n  -o-border-radius: 50%;\n  border-radius: 50%;\n  height: 100px;\n  width: 100px;\n  object-fit: cover; }\n  .GNdaVozQcueXzisnMZLLi > span > a > img:hover {\n    border: solid darkturquoise 1px;\n    box-shadow: 0 0 15px darkturquoise; }\n", "", {"version":3,"sources":["/./src/components/bunny-thumbs/src/components/bunny-thumbs/bunny-thumbs.scss","/./src/components/bunny-thumbs/src/scss/partials/_b-radius.scss","/./src/components/bunny-thumbs/src/scss/partials/_hover.scss"],"names":[],"mappings":"AAGA;EACE,aAAY;EACZ,wBAAuB;ECJvB,2BDKqB;ECJrB,wBDIqB;ECHrB,uBDGqB;ECFrB,sBDEqB;ECDrB,mBDCqB;EACrB,cAAa;EACb,aAAY;EACZ,kBAAiB,EAGlB;EATD;IEFE,gCAA+B;IAC/B,mCAAkC,EFSP","file":"bunny-thumbs.scss","sourcesContent":["@import 'b-radius';\n@import 'hover';\n\n:local(.thumbs > span > a > img) {\n  margin: auto;\n  border: solid black 1px;\n  @include b-radius(50%);\n  height: 100px;\n  width: 100px;\n  object-fit: cover;\n\n  &:hover { @include hover }\n}\n","@mixin b-radius($pct) {\n  -webkit-border-radius: $pct;\n  -moz-border-radius: $pct;\n  -ms-border-radius: $pct;\n  -o-border-radius: $pct;\n  border-radius: $pct;\n}","@mixin hover {\n  border: solid darkturquoise 1px;\n  box-shadow: 0 0 15px darkturquoise;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+	exports.locals = {
+		"thumbs": "GNdaVozQcueXzisnMZLLi"
+	};
+
+/***/ },
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 

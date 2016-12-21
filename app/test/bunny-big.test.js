@@ -15,31 +15,28 @@ describe('test UI remove component', () => {
   describe('calls bunny-app\'s remove() fn', () => {
 
     const bunny = { 
-      title: 'Ooooooh!', 
-      url: 'https://media.yayomg.com/wp-content/uploads/2014/04/yayomg-tiny-bunny.png', 
-      description: 'Meep!' 
+      title: 'Miffy', 
+      url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
+      description: 'Sanrio cease and desist!' 
     };
 
-    const bunnyApp = {
+    it('calls bunnyApp.remove()', () => {
+      const component = $component('bunnyBig', {});
 
-      remove(bunny) {
-        return Promise.resolve( bunny );
-      }
-
-    };
-
-    it('calls bunnyApp.remove()', done => {
-      const component = $component('bunnyBig', { bunnyApp });
+      component.bunny = { 
+        title: 'Miffy', 
+        url: 'https://s-media-cache-ak0.pinimg.com/originals/d6/31/1a/d6311ab5afd4f13169ba15ecf0d16f72.jpg', 
+        description: 'Sanrio cease and desist!' 
+      };
       
-      component.remove = () => bunny;
+      let result = null;
+      component.remove = ( obj ) => { result = obj; };
 
-      component.delete( bunny );
+      component.delete();
 
-      setTimeout(() => {
-        assert.deepEqual( component.remove(), bunny );
-        done();
-
-      });      
+      assert.deepEqual( result, bunny );
+        
     });
+    
   });
 });

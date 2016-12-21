@@ -1,0 +1,7 @@
+@mixin b-radius($pct) {
+  -webkit-border-radius: $pct;
+  -moz-border-radius: $pct;
+  -ms-border-radius: $pct;
+  -o-border-radius: $pct;
+  border-radius: $pct;
+}
