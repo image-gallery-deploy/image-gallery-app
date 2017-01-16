@@ -1,0 +1,18 @@
+  <section ng-class="$ctrl.styles.imagify">
+    <div>
+      <h4>ADD MY IMAGES</h4>
+      <div>
+        <label>ALBUM: <input ng-model="$ctrl.album" type="text"></label>
+      </div>
+      <div>
+        <label>TITLE: <input ng-model="$ctrl.title" type="text"></label>
+      </div>
+      <div>
+        <label>URL: <input ng-model="$ctrl.url" type="text"></label>
+      </div>
+      <div>
+        <label>DESCRIPTION: <input ng-model="$ctrl.description" type="text"></label>
+      </div>
+      <button ng-click="$ctrl.addImage()">IMAGIFY</button>
+    </div>
+  </section>

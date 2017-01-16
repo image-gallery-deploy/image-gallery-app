@@ -1,0 +1,19 @@
+:local(.albums) {
+  margin: 0;
+  max-width: none;
+  color: darkturquoise;
+  text-shadow: 1px 1px 5px #f2f2f2;
+}
+
+:local(.albums > ul) {
+  padding: 0;
+  margin: 1.5rem;
+}
+
+:local(.albums ul > h4) {
+  margin: 4rem 0 0.5rem 0;
+}
+
+:local(.button) {
+  margin: auto auto auto 2rem;
+}
