@@ -1,6 +1,0 @@
-@import 'hover', 'b-radius';
-
-button.active {
-  @include hover; 
-  @include b-radius(12%);
-}

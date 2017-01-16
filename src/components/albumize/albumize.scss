@@ -1,0 +1,38 @@
+@import 'b-radius';
+@import 'hover';
+
+:local(.albumize){
+  position: absolute;
+  max-width: none;
+  margin: 0.25rem auto auto 1rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  background-color: rgba(0, 0, 139, 0.5);
+  box-shadow: 0 0 15px darkturquoise;
+  border: 1px solid #f2f2f2;
+  @include b-radius(2%);
+  
+  &:hover { box-shadow: 0 0 15px #f2f2f2; }
+}
+
+:local(.albumize > div) {
+  position: relative;
+  height: content-max;
+}
+
+:local(.albumize > div > h4) {
+  margin: .25rem auto;
+  float: right;
+}
+
+:local(.albumize > div > div > label) {
+  float: right;
+}
+
+:local(.albumize > div > div > label > input) {
+  margin: 0.5rem;
+}
+
+:local(.albumize > div > button) {
+  float: right;
+}

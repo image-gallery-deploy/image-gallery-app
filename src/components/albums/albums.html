@@ -1,0 +1,17 @@
+
+<section ng-class="$ctrl.styles.albums">
+  <ul>
+    <h4>ALBUMS</h4>
+    <li ng-repeat="album in $ctrl.albums">
+      <span><a ui-sref="image-album({album: album.title})">{{album.title}}</a></span>
+      <button ng-class="$ctrl.styles.button" ng-click="$ctrl.remove(album)">DEALBUMIZE</button>
+
+    </li>
+  </ul>
+</section>
+
+<albumize
+  album="album"
+  add="$ctrl.add">
+</albumize>
+

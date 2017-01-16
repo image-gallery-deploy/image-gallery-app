@@ -1,0 +1,7 @@
+<h5>{{$ctrl.image.title}}</h5>
+<span><a ng-href="{{$ctrl.image.url}}"><img ng-class="$ctrl.styles.big" ng-src="{{$ctrl.image.url}}" alt="{{$ctrl.image.title}}"></a></span>
+<div>
+  <span ng-class="$ctrl.styles.descpt">{{$ctrl.image.description}}</span>
+  <button ng-class="$ctrl.styles.button" ng-click="$ctrl.delete()">DEIMAGIFY</button>
+  <span ng-class="$ctrl.styles.albm">Album: {{$ctrl.image.album}}</span>
+</div>

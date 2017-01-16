@@ -1,0 +1,34 @@
+@import 'b-radius';
+@import 'hover';
+
+:local(.imagify){
+  position: absolute;
+  margin: 3rem auto auto 3rem;
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  @include b-radius(2%);
+  
+  &:hover {@include hover;}
+}
+
+:local(.imagify > div) {
+  position: relative;
+  height: content-max;
+}
+
+:local(.imagify > div > h4) {
+  margin: .25rem auto;
+  float: right;
+}
+
+:local(.imagify > div > div > label) {
+  float: right;
+}
+
+:local(.imagify > div > div > label > input) {
+  margin: 0.5rem;
+}
+
+:local(.imagify > div > button) {
+  float: right;
+}

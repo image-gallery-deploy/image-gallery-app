@@ -1,0 +1,23 @@
+@import 'b-radius';
+@import 'hover';
+
+:local(.big) {
+  border: solid black 1px;
+  max-width: 100%;
+  @include b-radius(1%);
+  &:hover { @include hover };
+}
+
+:local(.descpt) { 
+  font-size: 0.85rem;
+  font-weight: lighter; 
+}
+
+:local(.albm) { 
+  font-size: 0.65rem;
+  font-weight: lighter; 
+}
+
+:local(.button) {
+  margin: auto auto auto 2em;
+}
