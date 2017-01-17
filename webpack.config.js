@@ -7,7 +7,7 @@ module.exports = {
   target: 'web',
   entry: './src/main.js', 
   output: {
-    path: '../server/public',
+    path: '../image-gallery-server/public',
     filename: 'main.js'
   },
   devtool: 'source-map', 
