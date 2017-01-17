@@ -42,4 +42,3 @@ Thumbs.db
 node_modules
 .env
 build
-public

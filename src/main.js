@@ -6,11 +6,13 @@ import components from './components';
 import services from './services';
 import uiRouter from 'angular-ui-router';
 import routes from './routes';
+import resource from 'angular-resource';
 
 const app = angular.module('myApp', [
   components,
   services,
-  uiRouter
+  uiRouter,
+  resource
 ]);
 
 app.config(routes);
