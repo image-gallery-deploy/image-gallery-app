@@ -17,6 +17,6 @@ const app = angular.module('myApp', [
 
 app.config(routes);
 
-const dev = 'http://localhost:3000/api';
+const dev = process.env.API_URL || 'http://localhost:3000/api';
 
 app.value('apiUrl', dev);
