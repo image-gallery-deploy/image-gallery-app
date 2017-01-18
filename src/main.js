@@ -15,6 +15,6 @@ const app = angular.module('myApp', [
   resource
 ]);
 
-app.config(routes);
-
 app.value('apiUrl', process.env.API_URL);
+
+app.config(routes);
