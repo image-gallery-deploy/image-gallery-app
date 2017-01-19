@@ -8,12 +8,12 @@
     "pretest": "npm run lint",
     "test": "karma start --single-run",
     "test:watch": "karma start",
-    "update-webdriver": "webdriver-manager update",
     "pree2e": "babel test-e2e-src --out-dir test-e2e",
     "e2e": "protractor",
     "e2eexplore": "protractor element-explorer",
+    "update-webdriver":"webdriver-manager update",
     "start": "webpack-dev-server --inline",
-    "build": "webpack"
+    "build": "webpack --define process.env.API_URL='\"/api\"'"
   },
   "repository": {
     "type": "git",
